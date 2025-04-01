@@ -6,6 +6,10 @@ A repository documenting effective prompts for creating structured learning expe
 
 This repository explores how to transform conversations with Amazon Q into guided learning journeys. It documents my experiments with prompt patterns that create step-by-step learning experiences for technical skills.
 
+The repository includes:
+- A primary learning prompt for general technical skills
+- Specialized prompts for specific skill areas (like typing)
+
 ## Why it matters
 
 Traditional learning resources often lack interactivity or personalization. By developing effective prompts for AI assistants like Amazon Q, we can create:
@@ -19,3 +23,6 @@ Traditional learning resources often lack interactivity or personalization. By d
 ## How to use this repository
 
 The `AmazonQ.md` file contains the core prompt pattern I've found effective. Simply copy the prompt, replace `[technology/skill]` with what you want to learn, and paste it to Amazon Q. The AI will guide you through a series of exercises, like a gym workout for your technical skills.
+
+For specialized skills:
+- `typing-skills.md` - A prompt designed specifically for improving typing speed and accuracy, with special considerations for split keyboard users

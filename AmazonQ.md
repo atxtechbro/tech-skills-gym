@@ -57,13 +57,11 @@ My first successful implementation was a tmux learning path that consisted of 14
 - **Contextual continuity**: Maintaining the thread throughout the conversation
 - **Control mechanisms**: Giving the learner control over pacing
 
-## Next Experiments
+## Specialized Learning Prompts
 
-- Testing different pacing mechanisms
-- Exploring optimal exercise count for different skills
-- Trying different formats for the exercises themselves
-- Investigating how to handle branching topics
-- Developing prompts for collaborative learning
+In addition to the primary learning prompt, I'm developing specialized prompts for specific skill areas:
+
+- **Typing Skills**: See `typing-skills.md` for a prompt focused on improving typing speed and accuracy, especially for split keyboard users
 
 ## Personal Notes
 
