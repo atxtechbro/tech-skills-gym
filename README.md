@@ -23,11 +23,3 @@ The `AmazonQ.md` file contains the core prompt patterns I've found effective, al
 1. Try the prompts with your own learning goals
 2. Adapt the patterns for different skills or technologies
 3. Share your experiences and improvements
-
-## Tags
-
-`learning`, `amazon-q`, `prompts`, `interactive-learning`, `skill-development`, `hands-on-exercises`, `technical-skills`
-
-## Status
-
-🌱 Just getting started! This repository documents an ongoing exploration of effective learning techniques with AI assistants.
