@@ -1,35 +1,35 @@
 # Amazon Q Learning Prompts
 
-A collection of prompts and exercises for learning technical skills through interactive challenges with Amazon Q.
+An experimental repository for documenting effective prompts that generate interactive learning experiences with Amazon Q.
 
 ## About This Repository
 
-This repository documents effective prompts for generating structured learning exercises with Amazon Q. Each prompt is designed to create a progressive learning path that takes you from beginner to proficient in various technical skills.
+This repository is a blank canvas for exploring and documenting prompts that create engaging, hands-on learning paths with Amazon Q. The goal is to discover patterns that transform AI interactions into structured educational experiences.
 
-## Key Features
+## Vision
 
-- **Progressive Learning Paths**: Step-by-step exercises that build on each other
-- **Interactive Challenges**: Hands-on exercises with immediate feedback
-- **Tracked Progress**: Clear indication of progress through the learning path
-- **Certificates of Completion**: Documentation of skills acquired
-- **Flexible Learning**: Ability to ask follow-up questions without losing context
+I'm exploring prompts that can:
 
-## Completed Learning Paths
+- Create progressive learning paths from beginner to proficient
+- Present challenges one at a time with appropriate pacing
+- Track progress through a learning journey
+- Allow natural conversation and follow-up questions
+- Generate documentation of skills acquired
 
-- [Tmux Fundamentals](./certificates/tmux-certificate.md) - 14 exercises covering session management, window operations, pane manipulation, and more
+## Repository Structure
+
+- `/prompts` - Effective prompts that generate learning experiences
+- `/certificates` - Documentation of completed learning paths
+- `/notes` - Observations about what makes prompts effective
 
 ## Tags
 
-`learning`, `amazon-q`, `prompts`, `interactive-learning`, `skill-development`, `hands-on-exercises`, `technical-skills`, `certificates`
-
-## How to Use
-
-1. Choose a learning path you're interested in
-2. Copy the corresponding prompt
-3. Paste it when chatting with Amazon Q
-4. Follow the interactive exercises
-5. Earn your certificate of completion!
+`learning`, `amazon-q`, `prompts`, `interactive-learning`, `skill-development`, `hands-on-exercises`, `technical-skills`, `experimentation`
 
 ## Contributing
 
-Feel free to add your own successful learning prompts and share your certificates of completion.
+This is a personal exploration project, but I welcome insights and observations about creating effective learning experiences with AI assistants.
+
+## Status
+
+🌱 Just getting started! This repository will evolve as I discover what works best.
