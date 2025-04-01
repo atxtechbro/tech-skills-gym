@@ -24,13 +24,13 @@ Let's begin with a warm-up exercise based on my previous challenges.
 
 The core of this approach is the continuous feedback loop:
 
-1. **Review history**: Check previous reports in .typing folder
+1. **Review history**: Check previous reports in progress-data folder
 2. **Warm-up**: Begin with exercises targeting known challenges
 3. **User feedback**: User reports their typed result with errors preserved
 4. **Pattern analysis**: Identify specific error patterns
 5. **Targeted exercise**: Create a new exercise specifically designed to address those patterns
 6. **Session report**: Generate a new report card at the end of the session
-7. **Save progress**: Store the report in the .typing folder for future reference
+7. **Save progress**: Store the report in the progress-data folder for future reference
 
 ## Split Keyboard Considerations
 
