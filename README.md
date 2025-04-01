@@ -20,7 +20,6 @@ I'm exploring prompts that can:
 
 - `/prompts` - Effective prompts that generate learning experiences
 - `/certificates` - Documentation of completed learning paths
-- `/notes` - Observations about what makes prompts effective
 
 ## Tags
 
