@@ -26,3 +26,17 @@ The `AmazonQ.md` file contains the core prompt pattern I've found effective. Sim
 
 For specialized skills:
 - `typing-skills.md` - A prompt designed specifically for improving typing speed and accuracy, with special considerations for split keyboard users
+
+### Progress Tracking System
+
+This repository includes a progress tracking system that stores session reports in a `.typing` folder (gitignored for privacy). This creates a feedback loop where:
+
+1. Amazon Q generates personalized exercises based on your needs
+2. Your progress is tracked in detailed report cards
+3. Future sessions reference these reports for continuity
+4. Exercises adapt to your specific challenges over time
+
+To use this system for typing practice:
+```
+I want to continue my split keyboard typing practice. Please review my previous session reports in the .typing folder to understand my progress and challenges, then create appropriate exercises for today's session that build on my previous work.
+```
