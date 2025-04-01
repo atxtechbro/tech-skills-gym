@@ -45,7 +45,7 @@ Unlike traditional learning with predetermined paths, this system creates a self
 1. **Input**: Your typing practice generates raw data about your specific challenges
 2. **Analysis**: Amazon Q identifies patterns in your errors (not just random mistakes)
 3. **Documentation**: These patterns are recorded in structured report cards
-4. **Storage**: Reports are preserved in the .typing folder (private, gitignored)
+4. **Storage**: Reports are preserved in the progress-data folder (private, gitignored)
 5. **Reference**: Future sessions begin by analyzing your historical patterns
 6. **Adaptation**: New exercises are generated specifically for your needs
 7. **Targeted Practice**: You work on your specific challenges
