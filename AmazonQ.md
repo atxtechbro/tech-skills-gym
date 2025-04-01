@@ -5,21 +5,21 @@ This document contains my internal notes and observations on creating effective 
 ## The Primary Learning Prompt
 
 ```
-I want to learn [technology/skill] from beginner to proficient level. Please create a series of progressive exercises that will:
+I want to learn [technology/skill] from beginner to proficient level. Please create a series of progressive guided practices that will:
 
 1. Start with fundamentals and build to advanced concepts
-2. Present one exercise at a time
-3. Wait for my completion before moving to the next exercise
-4. Track my progress (e.g., "Exercise 7/14")
+2. Present one practice at a time
+3. Wait for my completion before moving to the next one
+4. Track my progress (e.g., "Practice 7/14")
 5. Allow me to ask follow-up questions without losing context
 
-For each exercise:
+For each practice:
 - Provide clear instructions
 - Explain why this skill is useful
 - Show examples of expected output or behavior
-- Offer hints if I get stuck
+- Guide me through the process
 
-Press Y when you're ready to move to the next exercise.
+Press Y when you're ready to move to the next practice.
 ```
 
 ## Key Components Analysis
@@ -37,16 +37,16 @@ Press Y when you're ready to move to the next exercise.
 - **Clear instructions**: Direct, actionable steps
 - **Purpose explanation**: Why this particular skill matters
 - **Examples**: What success looks like
-- **Scaffolding**: "Offer hints if I get stuck"
+- **Guided practice**: Step-by-step guidance through the process
 
 ## Case Study: Tmux Learning Path
 
-My first successful implementation was a tmux learning path that consisted of 14 progressive exercises. What made it effective:
+My first successful implementation was a tmux learning path that consisted of 14 progressive practices. What made it effective:
 
-1. **Natural progression**: Each exercise built on skills from previous ones
-2. **Focused scope**: Each exercise taught one specific skill or concept
-3. **Immediate application**: Hands-on practice reinforced concepts
-4. **Visible progress**: The "Exercise X/14" format provided motivation
+1. **Natural progression**: Each practice built on skills from previous ones
+2. **Focused scope**: Each practice taught one specific skill or concept
+3. **Immediate application**: Hands-on repetition reinforced concepts
+4. **Visible progress**: The "Practice X/14" format provided motivation
 5. **Flexible pacing**: The "press Y to continue" mechanism gave me control
 
 ## Prompt Engineering Insights
@@ -68,3 +68,5 @@ My first successful implementation was a tmux learning path that consisted of 14
 ## Personal Notes
 
 The key insight seems to be balancing structure with flexibility. Too rigid, and the learning feels mechanical. Too loose, and it loses focus. The ideal prompt creates a framework that guides without constraining.
+
+The focus on guided practice rather than problem-solving exercises makes this approach more about building muscle memory and familiarity through repetition. It's less about figuring things out and more about getting comfortable with new technologies through guided repetition.
