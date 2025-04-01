@@ -1,2 +1,10 @@
 # Ignore typing progress reports and personal feedback
 .typing/
+progress-data/
+user-data/
+reports/
+.reports/
+.progress/
+.user-data/
+sessions/
+.sessions/

@@ -29,7 +29,7 @@ For specialized skills:
 
 ### Progress Tracking System
 
-This repository includes a progress tracking system that stores session reports in a `.typing` folder (gitignored for privacy). This creates a self-reinforcing feedback loop where:
+This repository includes a progress tracking system that stores session reports in a `progress-data` folder (gitignored for privacy). This creates a self-reinforcing feedback loop where:
 
 1. Amazon Q generates personalized exercises based on your needs
 2. Your progress is tracked in detailed report cards
@@ -67,9 +67,9 @@ Unlike traditional learning with predetermined paths, this system creates a self
 - Progresses to: Simple words with g/h combinations
 - Adapts based on: Your performance during the session
 
-See `.typing/feedback-loop-system.md` for more details on how this emergent learning system works.
+See `progress-data/feedback-loop-system.md` for more details on how this emergent learning system works.
 
 To use this system for typing practice:
 ```
-I want to continue my split keyboard typing practice. Please review my previous session reports in the .typing folder to understand my progress and challenges, then create appropriate exercises for today's session that build on my previous work.
+I want to continue my split keyboard typing practice. Please review my previous session reports in the progress-data folder to understand my progress and challenges, then create appropriate exercises for today's session that build on my previous work.
 ```
