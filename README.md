@@ -18,4 +18,4 @@ Traditional learning resources often lack interactivity or personalization. By d
 
 ## How to use this repository
 
-The `AmazonQ.md` file contains the core prompt pattern I've found effective. Simply copy the prompt, replace `[technology/skill]` with what you want to learn, and paste it to Amazon Q. The AI will guide you through a series of hands-on practices to build familiarity through repetition.
+The `AmazonQ.md` file contains the core prompt pattern I've found effective. Simply copy the prompt, replace `[technology/skill]` with what you want to learn, and paste it to Amazon Q. The AI will guide you through a series of exercises, like a gym workout for your technical skills.
