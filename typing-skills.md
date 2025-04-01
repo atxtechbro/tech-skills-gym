@@ -1,79 +1,76 @@
-# Typing Skills Development Prompt
+# Adaptive Typing Skills Development
 
-This specialized prompt is designed to help improve typing skills, particularly for users transitioning to split keyboards or working to increase their typing speed and accuracy.
+This prompt transforms Amazon Q into an adaptive typing coach that focuses on improving accuracy through real-time feedback and personalized exercises.
 
-## The Typing Skills Prompt
+## The Adaptive Typing Coach Prompt
 
 ```
-I want to improve my typing skills while adapting to a split keyboard. Currently typing around 30 WPM. Please create a series of progressive typing exercises that will:
+I need your help improving my typing accuracy on a split keyboard. I'm practicing touch typing (without looking at the keyboard) and need a coach that can:
 
-1. Start with simple exercises and gradually increase difficulty
-2. Each exercise should last approximately 30 seconds
-3. Present one exercise at a time
-4. Identify patterns in my mistakes and target those weaknesses
-5. Track my progress across sessions
-6. Provide specific feedback on my keystrokes and technique
+1. Observe my typing patterns through my self-reported errors
+2. Identify specific problem areas in real-time
+3. Create targeted exercises based on my actual mistakes, not a pre-planned curriculum
+4. Focus primarily on accuracy, not speed
+5. Adapt continuously as my skills develop
 
-For each exercise:
-- Provide clear text to type
-- Focus on different key combinations and finger movements
-- Explain which skills this particular exercise develops
-- Offer specific feedback when I report my results
+For our session:
+- Start with a simple typing sample to establish a baseline
+- After I report my results, analyze my specific error patterns
+- Generate a custom exercise targeting my most common mistakes
+- Continue this feedback loop, constantly refining exercises based on emerging patterns
+- Help me identify keyboard regions or finger movements where I struggle most
 
-After each exercise, I'll report my speed, accuracy, and any challenges. Based on this feedback, adapt the next exercise to target my weaknesses.
+I'll report exactly what I typed, including errors, after each exercise. Use this data to create the next exercise that specifically targets my weaknesses.
 
-Press Y when you're ready to begin the first exercise.
+Let's begin with a simple baseline test.
 ```
 
-## Exercise Structure
+## Feedback Loop Approach
 
-Each typing session should follow this pattern:
+The core of this approach is the continuous feedback loop:
 
-1. **Warm-up**: Simple exercises focusing on home row keys
-2. **Targeted practice**: Exercises addressing specific weaknesses identified in previous sessions
-3. **Challenge**: Slightly more difficult text to push skill development
-4. **Analysis**: Review of performance with specific recommendations
-5. **Cool-down**: Comfortable typing to end on a positive note
+1. **Sample text**: Provide text for typing practice
+2. **User feedback**: User reports their typed result with errors preserved
+3. **Pattern analysis**: Identify specific error patterns (not just general mistakes)
+4. **Targeted exercise**: Create a new exercise specifically designed to address those patterns
+5. **Repeat**: Continue the cycle, constantly refining the focus areas
 
-## Feedback Mechanisms
+## Error Pattern Recognition
 
-The AI should analyze reported results and provide feedback on:
+The AI should analyze errors for patterns such as:
 
-- Hand position and ergonomics
-- Problem key combinations
-- Rhythm and consistency
-- Error patterns
-- Speed vs. accuracy balance
+- Consistent mistakes with specific keys or key combinations
+- Finger positioning issues on particular keyboard regions
+- Hand coordination problems on the split keyboard
+- Recurring substitution patterns (e.g., consistently typing 'f' instead of 'g')
+- Timing issues with certain sequences
 
 ## Split Keyboard Considerations
 
-Special attention should be given to:
+Special attention to split keyboard challenges:
 
-- Thumb key usage
-- Hand separation awareness
-- Proper finger positioning without visual cues
-- Transitioning between keyboard halves
+- Hand independence and coordination
+- Center-adjacent keys (t, y, g, h) that may cause confusion
+- Thumb key accuracy
+- Proper hand positioning without visual reference
 
-## Progress Tracking
+## Adaptive Exercise Generation
 
-Track improvements in:
+Exercises should be generated based on:
 
-- Words per minute (WPM)
-- Accuracy percentage
-- Problem keys/combinations
-- Comfort level with split layout
+- Recently identified error patterns
+- Progressive difficulty that responds to improvement
+- Varied text that continues to test problem areas
+- Repetition of challenging sequences until mastery is achieved
 
-## Example Exercise Progression
+## Success Metrics
 
-1. Home row focus (asdf jkl;)
-2. Reaching exercises (qwer uiop)
-3. Vertical movement patterns (qaz wsx)
-4. Common bigrams (th, he, an, in)
-5. Alternating hand patterns
-6. Common English words
-7. Code syntax patterns
-8. Full sentences with punctuation
-9. Paragraph-length text
-10. Technical terminology
+Focus on these accuracy metrics rather than speed:
 
-The exercises should adapt based on user feedback, focusing more time on areas where improvement is needed.
+- Error rate reduction over time
+- Consistency in problem areas
+- Improvement in specific keyboard regions
+- Overall comfort with touch typing
+- Gradual development of muscle memory
+
+The key principle is that the learning path is not predetermined but emerges organically from the user's actual typing patterns and challenges.
