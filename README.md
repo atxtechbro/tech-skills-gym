@@ -14,12 +14,12 @@ I'm exploring prompts that can:
 - Present challenges one at a time with appropriate pacing
 - Track progress through a learning journey
 - Allow natural conversation and follow-up questions
-- Generate documentation of skills acquired
+- Document skills acquired along the way
 
 ## Repository Structure
 
-- `/prompts` - Effective prompts that generate learning experiences
-- `/certificates` - Documentation of completed learning paths
+- `/prompts` - Collection of effective learning prompts
+- `AmazonQ.md` - Core observations and insights about creating learning experiences
 
 ## Tags
 
