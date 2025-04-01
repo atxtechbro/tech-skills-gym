@@ -18,8 +18,7 @@ I'm exploring prompts that can:
 
 ## Repository Structure
 
-- `/prompts` - Collection of effective learning prompts
-- `AmazonQ.md` - Core observations and insights about creating learning experiences
+- `AmazonQ.md` - Core observations and insights about creating learning experiences, including the primary prompt pattern
 
 ## Tags
 
