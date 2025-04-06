@@ -61,7 +61,7 @@ My first successful implementation was a tmux learning path that consisted of 14
 
 In addition to the primary learning prompt, I'm developing specialized prompts for specific skill areas:
 
-- **Typing Skills**: See `typing-skills.md` for a prompt focused on improving typing speed and accuracy, especially for split keyboard users
+- **W3M Browser**: See `w3m-skills.md` for a prompt focused on learning the w3m text-based browser using a Fibonacci sequence of exercises
 
 ## Personal Notes
 
