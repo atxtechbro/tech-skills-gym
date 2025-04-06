@@ -1,13 +1,23 @@
-# W3M Browser Exercises
+# W3M Browser Learning Path
 
 A progressive series of exercises for learning the w3m text-based browser, following a Fibonacci sequence of complexity.
+
+## About This Learning Path
+
+This guide uses a Fibonacci sequence (1, 1, 2, 3, 5, 8, 13, 21) to create a natural progression of complexity:
+
+- **Level 1-2**: Basic navigation and viewing
+- **Level 3-5**: Intermediate features and file operations
+- **Level 8-21**: Advanced usage patterns and customizations
+
+This creates a learning curve that starts simple and gradually increases in complexity, with each level building upon skills from previous levels.
 
 ## How to Use This Guide
 
 1. Install w3m if not already installed: `sudo apt-get install w3m`
 2. Work through exercises in order
-3. Use `q chat` in your terminal for follow-up questions about any exercise
-4. Track your progress in a personal notes file
+3. Use Amazon Q for follow-up questions about any exercise
+4. Track your progress in personal notes
 
 ## Exercise 1: Basic Navigation (Fibonacci Level 1)
 
@@ -146,13 +156,24 @@ A progressive series of exercises for learning the w3m text-based browser, follo
   - `-cookie`: Enable cookie processing
   - `-no-cookie`: Disable cookie processing
 
+## Expected Learning Outcomes
+
+By the end of this sequence, you should be able to:
+
+1. Navigate websites efficiently using keyboard shortcuts
+2. Download and manage files
+3. Configure w3m for your specific needs
+4. Use bookmarks and history effectively
+5. Handle different content types (text, images, etc.)
+6. Integrate w3m with other command-line tools
+7. Customize the browser appearance and behavior
+8. Understand security considerations in text-based browsing
+
 ## Follow-Up Learning
 
-For any exercise, use `q chat` in your terminal to ask follow-up questions like:
+For any exercise, ask Amazon Q follow-up questions like:
 
 - "Can you explain more about w3m bookmark management?"
 - "What are some advanced keyboard shortcuts for w3m navigation?"
 - "How can I configure w3m to display images in the terminal?"
 - "What's the best way to handle forms in w3m?"
-
-Track your progress by creating notes in the progress-data directory after completing each exercise.
