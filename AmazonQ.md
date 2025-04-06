@@ -1,72 +1,26 @@
-# Prompt Engineering for Learning Experiences
+# AI Assistant Guide - Amazon Q
 
-This document contains my internal notes and observations on creating effective learning prompts for Amazon Q.
+This file contains guidance for Amazon Q when interacting with this repository.
 
-## The Primary Learning Prompt
 
-```
-I want to learn [technology/skill] from beginner to proficient level. Please create a series of progressive exercises that will:
+## Common Errors to Avoid
+- Use branch naming pattern: `type/description` (e.g., `feature/add-tool`, `fix/typo`)
+- Follow Conventional Commits style (e.g., `feat:`, `fix:`, `docs:`)
+- For GitHub CLI comments use: `gh pr comment <number> -b "text"` (not `---comment`)
+- Don't thank yourself when closing your own PRs
+- Always add an empty line at the end of new files or when appending to existing files
 
-1. Start with fundamentals and build to advanced concepts
-2. Present one exercise at a time
-3. Wait for my completion before moving to the next one
-4. Track my progress (e.g., "Exercise 7/14")
-5. Allow me to ask follow-up questions without losing context
+## PR Description Formatting
+- IMPORTANT: When creating PR descriptions, use actual line breaks instead of `\n\n` escape sequences
+- Example: `gh pr create --title "Title" --body "First line.` (press Enter) `Second line."` ✓
+- NOT: `gh pr create --title "Title" --body "First line.\n\nSecond line."` ✗
 
-For each exercise:
-- Provide clear instructions
-- Explain why this skill is useful
-- Show examples of expected output or behavior
-- Guide me through the process
+## Branching Strategy
+- When making discrete changes, always branch from main unless specifically asked otherwise
+- Use `git checkout main && git pull && git checkout -b type/description` to ensure clean branches
+- For changes to documentation or configuration files like AmazonQ.md, especially prefer branching from main
+- This prevents unintended changes from feature branches being included in your PR
 
-Press Y when you're ready to move to the next exercise.
-```
+Feel free to add your discoveries and insights below as you learn:
 
-## Key Components Analysis
-
-### Structural Elements
-
-- **Clear learning goal**: "I want to learn [technology/skill] from beginner to proficient level"
-- **Progressive difficulty**: "Start with fundamentals and build to advanced concepts"
-- **Pacing mechanism**: "Present one exercise at a time" + "Press Y when ready"
-- **Progress tracking**: "Track my progress (e.g., "Exercise 7/14")"
-- **Context maintenance**: "Allow me to ask follow-up questions without losing context"
-
-### Exercise Format
-
-- **Clear instructions**: Direct, actionable steps
-- **Purpose explanation**: Why this particular skill matters
-- **Examples**: What success looks like
-- **Guided approach**: Step-by-step guidance through the process
-
-## Case Study: Tmux Learning Path
-
-My first successful implementation was a tmux learning path that consisted of 14 progressive exercises. What made it effective:
-
-1. **Natural progression**: Each exercise built on skills from previous ones
-2. **Focused scope**: Each exercise taught one specific skill or concept
-3. **Immediate application**: Hands-on repetition reinforced concepts
-4. **Visible progress**: The "Exercise X/14" format provided motivation
-5. **Flexible pacing**: The "press Y to continue" mechanism gave me control
-
-## Prompt Engineering Insights
-
-- **Specificity matters**: Being clear about the desired learning outcome
-- **Structure creates flow**: The step-by-step format prevents overwhelm
-- **Progress indicators motivate**: Seeing advancement encourages continuation
-- **Contextual continuity**: Maintaining the thread throughout the conversation
-- **Control mechanisms**: Giving the learner control over pacing
-
-## Next Experiments
-
-- Testing different pacing mechanisms
-- Exploring optimal exercise count for different skills
-- Trying different formats for the exercises themselves
-- Investigating how to handle branching topics
-- Developing prompts for collaborative learning
-
-## Personal Notes
-
-The key insight seems to be balancing structure with flexibility. Too rigid, and the learning feels mechanical. Too loose, and it loses focus. The ideal prompt creates a framework that guides without constraining.
-
-The approach is like a gym workout for skills - structured exercises that build muscle memory through repetition. Each exercise is a rep that strengthens your technical capabilities, with the AI serving as both trainer and spotter.
+- Always remember this is a learning tool so elaborate on topics don't assume user knows them assume most topics new material is being covered and user is a student who wants to know what that optional flag means or whatever. Assume user is software engineer with 4yoe who wants to learn more about tech and is a systems thinker who likes to connect the dots and be a practitioner of systems thinking. Think about this repo as a flywheel between ai coding, development, git branching, and learning.
