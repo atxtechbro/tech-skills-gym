@@ -1,9 +1,0 @@
-# Ignore typing progress reports and personal feedback
-progress-data/
-user-data/
-reports/
-.reports/
-.progress/
-.user-data/
-sessions/
-.sessions/
