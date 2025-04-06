@@ -26,6 +26,7 @@ The `AmazonQ.md` file contains the core prompt pattern I've found effective. Sim
 
 For specialized skills:
 - `typing-skills.md` - A prompt designed specifically for improving typing speed and accuracy, with special considerations for split keyboard users
+- `w3m-skills.md` - A prompt designed for learning the w3m text-based browser using a Fibonacci sequence of exercises
 
 ### Progress Tracking System
 
