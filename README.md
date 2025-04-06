@@ -1,28 +1,24 @@
-# Amazon Q Learning Prompts
+# Adaptive Session Coach: AI-Powered Skill Development
 
-A repository documenting effective prompts for creating structured learning experiences with Amazon Q.
+AI training helped me achieve world-class results in the gym (2023-2025). Now I'm applying those same principles to rapidly level up my tech skills.
 
-## What is this?
+## What's here
 
-This repository explores how to transform conversations with Amazon Q into guided learning journeys. It documents my experiments with prompt patterns that create step-by-step learning experiences for technical skills.
+- Structured learning paths that follow gym-style progressive overload
+- AI coaching sessions that adapt to my specific weaknesses
+- A record of real skills I'm actively developing
 
-The repository includes:
-- A primary learning prompt for general technical skills
-- Specialized prompts for specific skill areas (like typing)
+## Core idea
 
-## Why it matters
+The same feedback loops that work in physical training can work for technical skills:
+- Set clear goals
+- Track performance
+- Identify weaknesses
+- Target specific challenges
+- Progressive skill building
 
-Traditional learning resources often lack interactivity or personalization. By developing effective prompts for AI assistants like Amazon Q, we can create:
+## Current focus
 
-- Progressive learning paths tailored to individual needs
-- Interactive challenges with immediate feedback
-- Adaptive pacing based on learner readiness
-- Contextual follow-up discussions
-- Hands-on skill development
+Backend, Linux, CI/CD, operating systems, and hardware - using AI as my learning accelerator.
 
-## How to use this repository
-
-The `AmazonQ.md` file contains the core prompt pattern I've found effective. Simply copy the prompt, replace `[technology/skill]` with what you want to learn, and paste it to Amazon Q. The AI will guide you through a series of exercises, like a gym workout for your technical skills.
-
-For specialized skills:
-- `w3m-learning.md` - A structured learning path for the w3m text-based browser using a Fibonacci sequence of exercises
+This repo is my experiment in creating a flywheel between AI coaching, skill development, and systems thinking.
