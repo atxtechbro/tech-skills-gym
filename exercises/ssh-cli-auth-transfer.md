@@ -127,6 +127,8 @@ You're working with a text-only Arch Linux installation on an older ThinkPad T40
    ```
 
 2. **Resume Claude CLI setup** on the ThinkPad with the token (if required).
+   
+   **Note:** On the text-only ThinkPad, copying the token from the file to the prompt requires using nano's visual mode (unlike the graphical machine). This contrast in text handling between environments is an interesting challenge. Be aware that if the process takes too long (30+ minutes), you might encounter an "OAuth error: Invalid state parameter" and need to restart.
 
 ## Alternative Approaches
 
