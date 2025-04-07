@@ -76,7 +76,7 @@ This creates a learning curve that starts simple and gradually increases in comp
 - n: Next match
 - N: Previous match
 
-## Exercise 5: Bookmarks
+## Exercise 4: Bookmarks
 
 **Goal**: Create and manage bookmarks
 
@@ -104,7 +104,7 @@ This creates a learning curve that starts simple and gradually increases in comp
 
 **Note**: The `v` key in original key binding shows HTML source, not bookmarks.
 
-## Exercise 8: File Operations
+## Exercise 5: File Operations
 
 **Goal**: Download and view files
 
@@ -123,7 +123,7 @@ This creates a learning curve that starts simple and gradually increases in comp
 - D: Download link target
 - o: Open local file
 
-## Exercise 13: Configuration
+## Exercise 6: Configuration
 
 **Goal**: Customize w3m settings
 
@@ -143,7 +143,7 @@ This creates a learning curve that starts simple and gradually increases in comp
 - Space: Toggle options
 - Arrow keys: Navigate options
 
-## Exercise 21: Advanced Integration
+## Exercise 7: Advanced Integration
 
 **Goal**: Integrate w3m with other command-line tools
 
