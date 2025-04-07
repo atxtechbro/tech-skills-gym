@@ -2,6 +2,7 @@
 
 This file contains guidance for Amazon Q when interacting with this repository.
 
+- After creating a PR, don't summarize what was just done - move directly to the next task
 
 ## Common Errors to Avoid
 - Use branch naming pattern: `type/description` (e.g., `feature/add-tool`, `fix/typo`)
