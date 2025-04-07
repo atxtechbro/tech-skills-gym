@@ -129,6 +129,8 @@ You're working with a text-only Arch Linux installation on an older ThinkPad T40
 2. **Resume Claude CLI setup** on the ThinkPad with the token (if required).
    
    **Note:** On the text-only ThinkPad, copying the token from the file to the prompt requires using nano's visual mode (unlike the graphical machine). This contrast in text handling between environments is an interesting challenge. Be aware that if the process takes too long (30+ minutes), you might encounter an "OAuth error: Invalid state parameter" and need to restart.
+   
+   **Learning curve:** While the first attempt might take 20-30 minutes, subsequent attempts can be completed in under a minute once you have the commands in your history and understand the workflow. However, OAuth errors may still occur due to security features like session expiration, token reuse prevention, or state parameter validation. Solving these authentication challenges is an exercise for later exploration.
 
 ## Alternative Approaches
 
