@@ -1,16 +1,16 @@
 # W3M Browser Learning Path
 
-A progressive series of exercises for learning the w3m text-based browser, following a Fibonacci sequence of complexity.
+A progressive series of exercises for learning the w3m text-based browser.
 
 ## About This Learning Path
 
-This guide uses a Fibonacci sequence (1, 1, 2, 3, 5, 8, 13, 21) to create a natural progression of complexity:
+This guide creates a natural progression of complexity:
 
-- **Level 1-2**: Basic navigation and viewing
-- **Level 3-5**: Intermediate features and file operations
-- **Level 8-21**: Advanced usage patterns and customizations
+- **Basic**: Navigation and viewing
+- **Intermediate**: Features and file operations
+- **Advanced**: Usage patterns and customizations
 
-This creates a learning curve that starts simple and gradually increases in complexity, with each level building upon skills from previous levels.
+This creates a learning curve that starts simple and gradually increases in complexity, with each exercise building upon skills from previous ones.
 
 ## How to Use This Guide
 
@@ -19,7 +19,7 @@ This creates a learning curve that starts simple and gradually increases in comp
 3. Use Amazon Q for follow-up questions about any exercise
 4. Track your progress in personal notes
 
-## Exercise 1: Basic Navigation (Fibonacci Level 1)
+## Exercise 1: Basic Navigation
 
 **Goal**: Launch w3m and navigate a simple webpage
 
@@ -38,7 +38,7 @@ This creates a learning curve that starts simple and gradually increases in comp
 - q: Quit
 - y/n: Confirm/cancel
 
-## Exercise 2: Link Navigation (Fibonacci Level 1)
+## Exercise 2: Link Navigation
 
 **Goal**: Navigate between links and open them
 
@@ -57,7 +57,7 @@ This creates a learning curve that starts simple and gradually increases in comp
 - Enter: Follow link
 - B or left arrow: Go back to previous page
 
-## Exercise 3: Text Search (Fibonacci Level 2)
+## Exercise 3: Text Search
 
 **Goal**: Search for text within pages
 
@@ -76,7 +76,7 @@ This creates a learning curve that starts simple and gradually increases in comp
 - n: Next match
 - N: Previous match
 
-## Exercise 5: Bookmarks (Fibonacci Level 3)
+## Exercise 5: Bookmarks
 
 **Goal**: Create and manage bookmarks
 
@@ -104,7 +104,7 @@ This creates a learning curve that starts simple and gradually increases in comp
 
 **Note**: The `v` key in original key binding shows HTML source, not bookmarks.
 
-## Exercise 8: File Operations (Fibonacci Level 5)
+## Exercise 8: File Operations
 
 **Goal**: Download and view files
 
@@ -123,7 +123,7 @@ This creates a learning curve that starts simple and gradually increases in comp
 - D: Download link target
 - o: Open local file
 
-## Exercise 13: Configuration (Fibonacci Level 8)
+## Exercise 13: Configuration
 
 **Goal**: Customize w3m settings
 
@@ -143,7 +143,7 @@ This creates a learning curve that starts simple and gradually increases in comp
 - Space: Toggle options
 - Arrow keys: Navigate options
 
-## Exercise 21: Advanced Integration (Fibonacci Level 13)
+## Exercise 21: Advanced Integration
 
 **Goal**: Integrate w3m with other command-line tools
 
