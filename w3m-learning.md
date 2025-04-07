@@ -46,7 +46,7 @@ This creates a learning curve that starts simple and gradually increases in comp
 1. Launch w3m with: `w3m https://lite.duckduckgo.com`
 2. Use Tab key to jump between links
 3. Press Enter to follow a link
-4. Use Backspace to go back to the previous page
+4. Use `B` key or left arrow to go back to the previous page
 5. Try searching for "w3m browser tutorial" and following a result
 
 **Why This Matters**: Efficient link navigation is essential for browsing the web in a text interface
@@ -55,7 +55,7 @@ This creates a learning curve that starts simple and gradually increases in comp
 - Tab: Move to next link
 - Shift+Tab: Move to previous link
 - Enter: Follow link
-- Backspace: Go back to previous page
+- B or left arrow: Go back to previous page (not Backspace)
 
 ## Exercise 3: Text Search (Fibonacci Level 2)
 
