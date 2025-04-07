@@ -146,6 +146,8 @@ You're working with a text-only Arch Linux installation on an older ThinkPad T40
    ```
    
    **Note:** While scanning the QR code is convenient, you may end up with a verification code on your smartphone that still needs to be transferred back to the ThinkPad. This creates another transfer challenge and isn't a complete solution by itself.
+   
+   **Additional challenge:** When trying to manually type the verification code from smartphone back into the terminal, errors are common. Attempting this resulted in "OAuth error: Request failed with status code 400" - likely due to typos or character mismatches when manually entering the code.
 
 2. **Using Magic Wormhole** for direct secure transfer:
    ```bash
