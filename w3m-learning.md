@@ -82,9 +82,9 @@ This creates a learning curve that starts simple and gradually increases in comp
 
 **Instructions**:
 1. Navigate to a page you want to bookmark
-2. Press `a` to add current page to bookmarks
+2. Press `ESC a` to add current page to bookmarks (or just `a` if using Lynx-like key binding)
 3. Enter a bookmark name when prompted
-4. Press `v` to view your bookmarks
+4. Press `ESC b` to view your bookmarks (or `v` if using Lynx-like key binding)
 5. Navigate to a bookmark and press Enter to visit it
 6. In bookmark list, press `a` to add a new bookmark URL
 7. In bookmark list, press `d` to delete a bookmark
@@ -92,10 +92,17 @@ This creates a learning curve that starts simple and gradually increases in comp
 **Why This Matters**: Bookmarks allow quick access to frequently visited pages
 
 **Key Commands**:
-- a: Add bookmark (when viewing a page)
-- v: View bookmarks
-- a: Add URL (when in bookmark list)
-- d: Delete bookmark (when in bookmark list)
+- Original key binding:
+  - ESC a: Add bookmark (when viewing a page)
+  - ESC b: View bookmarks
+- Lynx-like key binding:
+  - a or ESC a: Add bookmark (when viewing a page)
+  - v or ESC b: View bookmarks
+- In bookmark list (both key bindings):
+  - a: Add URL
+  - d: Delete bookmark
+
+**Note**: The `v` key in original key binding shows HTML source, not bookmarks.
 
 ## Exercise 8: File Operations (Fibonacci Level 5)
 
