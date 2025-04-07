@@ -107,17 +107,14 @@ You're working with a text-only Arch Linux installation on an older ThinkPad T40
    
    **Note:** Replace `<username>` with your ThinkPad username (run `whoami` on ThinkPad to check) and `<ip-address>` with the IP address from step 4.
 
-2. **View the authentication URL**:
-   ```bash
-   cat ~/claude-auth-url.txt
-   ```
-
-3. **Alternative: Copy the URL directly**:
+2. **Use SCP to securely copy the URL file**:
    ```bash
    # From visual browser machine
    scp <username>@<ip-address>:~/claude-auth-url.txt ./
    cat claude-auth-url.txt
    ```
+   
+   SCP (Secure Copy Protocol) is built on SSH and allows you to securely transfer files between computers. This approach is much more reliable than trying to copy text from an SSH terminal session, which often doesn't integrate well with the system clipboard.
 
 4. **Open the URL in a graphical browser** on your modern machine, complete the authentication process.
 
