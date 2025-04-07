@@ -53,13 +53,7 @@ You're working with a text-only Arch Linux installation on an older ThinkPad T40
    sudo systemctl restart sshd
    ```
 
-4. **Find your IP address**:
-   ```bash
-   ip addr show | grep inet
-   ```
-   Note the IP address (usually starts with 192.168.x.x or 10.x.x.x)
-
-5. **Test SSH locally**:
+4. **Test SSH locally**:
    ```bash
    ssh localhost
    ```
@@ -92,15 +86,21 @@ You're working with a text-only Arch Linux installation on an older ThinkPad T40
    ```
    This will prompt you with an authentication URL that you need to access.
 
-4. **Save the authentication URL**:
+4. **Find your ThinkPad's IP address** (needed for the next step):
+   ```bash
+   ip addr show | grep inet
+   ```
+   Note the IP address (usually starts with 192.168.x.x or 10.x.x.x)
+
+5. **Save the authentication URL**:
    ```bash
    # When Claude outputs the auth URL, save it to a file
    echo "https://long-authentication-url.example.com/with/many/parameters?and=values" > ~/claude-auth-url.txt
    ```
 
-### Part 3: Transfer and Use the URL on Modern Machine
+### Part 3: Transfer and Use the URL on Visual Browser Machine
 
-1. **From your modern machine, connect to the ThinkPad**:
+1. **From your machine with a visual browser, connect to the ThinkPad**:
    ```bash
    ssh username@thinkpad-ip-address
    ```
@@ -112,7 +112,7 @@ You're working with a text-only Arch Linux installation on an older ThinkPad T40
 
 3. **Alternative: Copy the URL directly**:
    ```bash
-   # From modern machine
+   # From visual browser machine
    scp username@thinkpad-ip-address:~/claude-auth-url.txt ./
    cat claude-auth-url.txt
    ```
@@ -125,7 +125,7 @@ You're working with a text-only Arch Linux installation on an older ThinkPad T40
 
 1. **If a token is provided after authentication**, transfer it back:
    ```bash
-   # On modern machine, save the token
+   # On visual browser machine, save the token
    echo "your-authentication-token" > claude-token.txt
    
    # Transfer to ThinkPad
@@ -155,13 +155,13 @@ You're working with a text-only Arch Linux installation on an older ThinkPad T40
    # On ThinkPad
    wormhole send ~/claude-auth-url.txt
    
-   # On modern machine
+   # On visual browser machine
    wormhole receive [code-from-thinkpad]
    ```
 
 3. **X11 Forwarding** to run a graphical browser through SSH:
    ```bash
-   # From modern machine
+   # From visual browser machine
    ssh -X username@thinkpad-ip-address
    
    # On ThinkPad through SSH with X forwarding
