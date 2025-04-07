@@ -1,0 +1,170 @@
+# SSH Authentication URL Transfer Exercise
+
+This exercise addresses a common real-world scenario: securely transferring a long authentication URL between machines when one has limited capabilities.
+
+## Actual Use Case
+
+You're working with a text-only Arch Linux installation on an older ThinkPad T400. You need to authenticate the Claude CLI (Anthropic's AI assistant), which requires accessing a long authentication URL. The text-based browsers available (w3m, lynx, etc.) are struggling with the modern authentication page, and manually typing the URL would be error-prone and tedious.
+
+## Learning Objectives
+
+- Set up SSH connections between computers with different capabilities
+- Transfer authentication URLs or tokens securely
+- Work around limitations of older hardware
+- Implement practical solutions for CLI tool authentication
+- Understand the challenges of text-only environments
+
+## Prerequisites
+
+- A text-only Linux machine (like a ThinkPad T400 with Arch Linux)
+- A modern computer with graphical browser capabilities
+- Network connectivity between machines
+- Basic command line knowledge
+
+## Exercise Steps
+
+### Part 1: Prepare the Source Machine (ThinkPad T400)
+
+1. **Install OpenSSH** if not already installed:
+   ```bash
+   sudo pacman -S openssh
+   ```
+
+2. **Start the SSH service**:
+   ```bash
+   sudo systemctl start sshd
+   sudo systemctl status sshd  # Verify it's running
+   ```
+
+3. **Troubleshooting "Connection refused" errors**:
+   ```bash
+   # Edit SSH configuration
+   sudo nano /etc/ssh/sshd_config
+   
+   # Ensure these lines are uncommented:
+   # ListenAddress 0.0.0.0
+   # PasswordAuthentication yes
+   
+   # Restart SSH after changes
+   sudo systemctl restart sshd
+   ```
+
+4. **Find your IP address**:
+   ```bash
+   ip addr show | grep inet
+   ```
+   Note the IP address (usually starts with 192.168.x.x or 10.x.x.x)
+
+5. **Test SSH locally**:
+   ```bash
+   ssh localhost
+   ```
+
+### Part 2: Initial Claude CLI Setup on ThinkPad
+
+1. **Install Node.js and npm** (required for Claude CLI):
+   ```bash
+   sudo pacman -S nodejs npm
+   ```
+
+2. **Install Claude CLI**:
+   ```bash
+   npm install -g @anthropic-ai/claude-code
+   ```
+
+3. **Begin Claude authentication process**:
+   ```bash
+   claude
+   ```
+   This will prompt you with an authentication URL that you need to access.
+
+4. **Save the authentication URL**:
+   ```bash
+   # When Claude outputs the auth URL, save it to a file
+   echo "https://long-authentication-url.example.com/with/many/parameters?and=values" > ~/claude-auth-url.txt
+   ```
+
+### Part 3: Transfer and Use the URL on Modern Machine
+
+1. **From your modern machine, connect to the ThinkPad**:
+   ```bash
+   ssh username@thinkpad-ip-address
+   ```
+
+2. **View the authentication URL**:
+   ```bash
+   cat ~/claude-auth-url.txt
+   ```
+
+3. **Alternative: Copy the URL directly**:
+   ```bash
+   # From modern machine
+   scp username@thinkpad-ip-address:~/claude-auth-url.txt ./
+   cat claude-auth-url.txt
+   ```
+
+4. **Open the URL in a graphical browser** on your modern machine, complete the authentication process.
+
+5. **Copy the resulting authentication token** (if any) to transfer back to the ThinkPad.
+
+### Part 4: Complete Authentication on ThinkPad
+
+1. **If a token is provided after authentication**, transfer it back:
+   ```bash
+   # On modern machine, save the token
+   echo "your-authentication-token" > claude-token.txt
+   
+   # Transfer to ThinkPad
+   scp claude-token.txt username@thinkpad-ip-address:~/
+   ```
+
+2. **Resume Claude CLI setup** on the ThinkPad with the token (if required).
+
+## Alternative Approaches
+
+1. **QR Code Method**:
+   ```bash
+   # On ThinkPad, install qrencode
+   sudo pacman -S qrencode
+   
+   # Generate QR code from auth URL
+   qrencode -t ANSIUTF8 -o - "$(cat ~/claude-auth-url.txt)"
+   
+   # Scan with smartphone and complete auth there
+   ```
+
+2. **Using Magic Wormhole** for direct secure transfer:
+   ```bash
+   # On both machines, install magic-wormhole
+   sudo pacman -S magic-wormhole
+   
+   # On ThinkPad
+   wormhole send ~/claude-auth-url.txt
+   
+   # On modern machine
+   wormhole receive [code-from-thinkpad]
+   ```
+
+3. **X11 Forwarding** to run a graphical browser through SSH:
+   ```bash
+   # From modern machine
+   ssh -X username@thinkpad-ip-address
+   
+   # On ThinkPad through SSH with X forwarding
+   firefox &  # If you have a graphical browser installed
+   ```
+
+## Reflection Questions
+
+1. What are the security implications of transferring authentication URLs between machines?
+2. How could this process be automated for regular use?
+3. What are the limitations of text-based browsers for modern web authentication?
+4. How might CLI tools better accommodate text-only environments?
+
+## Bonus Challenge
+
+Create a shell script that automates the process of extracting authentication URLs from CLI tools and generating QR codes for easy scanning with a smartphone.
+
+---
+
+*Note: This exercise was created based on a real-world challenge with authenticating CLI tools on text-only Linux systems. The approach can be applied to many modern CLI tools that require web authentication.*
