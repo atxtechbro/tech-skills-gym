@@ -149,37 +149,14 @@ You're working with a text-only Arch Linux installation on an older ThinkPad T40
    
    **Additional challenge:** When trying to manually type the verification code from smartphone back into the terminal, errors are common. Attempting this resulted in "OAuth error: Request failed with status code 400" - likely due to typos or character mismatches when manually entering the code.
 
-2. **Using Magic Wormhole** for direct secure transfer:
-   ```bash
-   # On both machines, install magic-wormhole
-   sudo pacman -S magic-wormhole
-   
-   # On ThinkPad
-   wormhole send ~/claude-auth-url.txt
-   
-   # On visual browser machine
-   wormhole receive <code-from-thinkpad>
-   ```
+## Conclusion: Success!
 
-3. **X11 Forwarding** to run a graphical browser through SSH:
-   ```bash
-   # From visual browser machine
-   ssh -X <username>@<ip-address>
-   
-   # On ThinkPad through SSH with X forwarding
-   firefox &  # If you have a graphical browser installed
-   ```
+I successfully authenticated Claude Code using the SCP method. The key was removing an extra space at the end of the verification code when yanking it in visual mode - this likely explains the earlier "Invalid state parameter" errors.
 
-## Reflection Questions
-
-1. What are the security implications of transferring authentication URLs between machines?
-2. How could this process be automated for regular use?
-3. What are the limitations of text-based browsers for modern web authentication?
-4. How might CLI tools better accommodate text-only environments?
-
-## Bonus Challenge
-
-Create a shell script that automates the process of extracting authentication URLs from CLI tools and generating QR codes for easy scanning with a smartphone.
+This exercise achieved:
+- Getting Claude Code working on a ThinkPad T400
+- Extending AI capabilities to older hardware
+- Demonstrating how SSH can bridge modern browser-based authentication with terminal-only environments
 
 ---
 
