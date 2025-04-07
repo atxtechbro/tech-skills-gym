@@ -55,7 +55,7 @@ This creates a learning curve that starts simple and gradually increases in comp
 - Tab: Move to next link
 - Shift+Tab: Move to previous link
 - Enter: Follow link
-- B or left arrow: Go back to previous page (not Backspace)
+- B or left arrow: Go back to previous page
 
 ## Exercise 3: Text Search (Fibonacci Level 2)
 
