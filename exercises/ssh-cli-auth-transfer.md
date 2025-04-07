@@ -100,25 +100,20 @@ You're working with a text-only Arch Linux installation on an older ThinkPad T40
 
 ### Part 3: Transfer and Use the URL on Visual Browser Machine
 
-1. **From your machine with a visual browser, connect to the ThinkPad**:
-   ```bash
-   ssh <username>@<ip-address>
-   ```
-   
-   **Note:** Replace `<username>` with your ThinkPad username (run `whoami` on ThinkPad to check) and `<ip-address>` with the IP address from step 4.
-
-2. **Use SCP to securely copy the URL file**:
+1. **Use SCP to securely copy the URL file**:
    ```bash
    # From visual browser machine
    scp <username>@<ip-address>:~/claude-auth-url.txt ./
    cat claude-auth-url.txt
    ```
    
+   **Note:** Replace `<username>` with your ThinkPad username (run `whoami` on ThinkPad to check) and `<ip-address>` with the IP address from step 4.
+   
    SCP (Secure Copy Protocol) is built on SSH and allows you to securely transfer files between computers. This approach is much more reliable than trying to copy text from an SSH terminal session, which often doesn't integrate well with the system clipboard.
 
-4. **Open the URL in a graphical browser** on your modern machine, complete the authentication process.
+2. **Open the URL in a graphical browser** on your modern machine, complete the authentication process.
 
-5. **Copy the resulting authentication token** (if any) to transfer back to the ThinkPad.
+3. **Copy the resulting authentication token** (if any) to transfer back to the ThinkPad.
 
 ### Part 4: Complete Authentication on ThinkPad
 
