@@ -102,8 +102,10 @@ You're working with a text-only Arch Linux installation on an older ThinkPad T40
 
 1. **From your machine with a visual browser, connect to the ThinkPad**:
    ```bash
-   ssh username@thinkpad-ip-address
+   ssh <username>@<ip-address>
    ```
+   
+   **Note:** Replace `<username>` with your ThinkPad username (run `whoami` on ThinkPad to check) and `<ip-address>` with the IP address from step 4.
 
 2. **View the authentication URL**:
    ```bash
@@ -113,7 +115,7 @@ You're working with a text-only Arch Linux installation on an older ThinkPad T40
 3. **Alternative: Copy the URL directly**:
    ```bash
    # From visual browser machine
-   scp username@thinkpad-ip-address:~/claude-auth-url.txt ./
+   scp <username>@<ip-address>:~/claude-auth-url.txt ./
    cat claude-auth-url.txt
    ```
 
@@ -129,7 +131,7 @@ You're working with a text-only Arch Linux installation on an older ThinkPad T40
    echo "your-authentication-token" > claude-token.txt
    
    # Transfer to ThinkPad
-   scp claude-token.txt username@thinkpad-ip-address:~/
+   scp claude-token.txt <username>@<ip-address>:~/
    ```
 
 2. **Resume Claude CLI setup** on the ThinkPad with the token (if required).
@@ -156,13 +158,13 @@ You're working with a text-only Arch Linux installation on an older ThinkPad T40
    wormhole send ~/claude-auth-url.txt
    
    # On visual browser machine
-   wormhole receive [code-from-thinkpad]
+   wormhole receive <code-from-thinkpad>
    ```
 
 3. **X11 Forwarding** to run a graphical browser through SSH:
    ```bash
    # From visual browser machine
-   ssh -X username@thinkpad-ip-address
+   ssh -X <username>@<ip-address>
    
    # On ThinkPad through SSH with X forwarding
    firefox &  # If you have a graphical browser installed
