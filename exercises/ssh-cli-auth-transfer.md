@@ -41,9 +41,13 @@ You're working with a text-only Arch Linux installation on an older ThinkPad T40
    # Edit SSH configuration
    sudo nano /etc/ssh/sshd_config
    
-   # Ensure these lines are uncommented:
+   # Look for these lines (they might be commented with # at the beginning):
    # ListenAddress 0.0.0.0
    # PasswordAuthentication yes
+   # (Note: These lines might not be next to each other - use Ctrl+W to search)
+   
+   # Remove the # at the beginning of each line if present
+   # When done, save with Ctrl+O, then Enter, and exit with Ctrl+X
    
    # Restart SSH after changes
    sudo systemctl restart sshd
@@ -59,6 +63,16 @@ You're working with a text-only Arch Linux installation on an older ThinkPad T40
    ```bash
    ssh localhost
    ```
+   
+   You'll likely see this warning:
+   ```
+   The authenticity of host 'localhost (::1)' can't be established.
+   ED25519 key fingerprint is SHA256:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
+   This key is not known by any other names.
+   Are you sure you want to continue connecting (yes/no/[fingerprint])?
+   ```
+   
+   This is normal and expected! Type `yes` and press Enter. This warning appears because this is your first SSH connection to this server, and SSH is protecting you from potential man-in-the-middle attacks. After connecting once, the key will be stored in your `~/.ssh/known_hosts` file and you won't see this warning again.
 
 ### Part 2: Initial Claude CLI Setup on ThinkPad
 
