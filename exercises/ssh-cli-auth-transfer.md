@@ -144,6 +144,8 @@ You're working with a text-only Arch Linux installation on an older ThinkPad T40
    
    # Scan with smartphone and complete auth there
    ```
+   
+   **Note:** While scanning the QR code is convenient, you may end up with a verification code on your smartphone that still needs to be transferred back to the ThinkPad. This creates another transfer challenge and isn't a complete solution by itself.
 
 2. **Using Magic Wormhole** for direct secure transfer:
    ```bash
