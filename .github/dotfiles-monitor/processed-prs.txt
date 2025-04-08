@@ -1,0 +1,2 @@
+# This file tracks processed PR numbers from the dotfiles repository
+# Format: One PR number per line
