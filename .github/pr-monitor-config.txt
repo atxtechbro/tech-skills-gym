@@ -1,0 +1,12 @@
+# Configuration file for GitHub PR Monitor
+# Format: owner/repo (one per line)
+# The first non-commented line is used as the default repository to monitor
+
+# Default repository to monitor
+atxtechbro/dotfiles
+
+# Additional repositories can be added below
+# Example:
+# kubernetes/kubernetes
+# golang/go
+# microsoft/vscode
