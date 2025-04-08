@@ -10,13 +10,17 @@ jobs:
   monitor-prs:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Setup GitHub CLI
+        uses: cli/setup-gh@v1
+        
       - name: Check for merged PRs
         id: check-prs
         run: |
-          # Get list of recently merged PRs
-          MERGED_PRS=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-            "https://api.github.com/repos/atxtechbro/dotfiles/pulls?state=closed&sort=updated&direction=desc&per_page=10" | \
-            jq -r '.[] | select(.merged_at != null) | .number')
+          # Get list of recently merged PRs using GitHub CLI
+          MERGED_PRS=$(gh pr list --repo atxtechbro/dotfiles --state merged --limit 10 --json number --jq '.[].number')
           
           # Create a file to store PR numbers we've already processed
           mkdir -p .github/dotfiles-monitor
@@ -26,17 +30,18 @@ jobs:
             touch "$PROCESSED_FILE"
           fi
           
+          # Load processed PRs
+          PROCESSED_PRS=$(cat "$PROCESSED_FILE" | grep -v "^#" || echo "")
+          
           # Check each PR
           for PR_NUMBER in $MERGED_PRS; do
-            if ! grep -q "^$PR_NUMBER$" "$PROCESSED_FILE"; then
+            if ! echo "$PROCESSED_PRS" | grep -q "^$PR_NUMBER$"; then
               echo "Found newly merged PR: $PR_NUMBER"
               
               # Trigger the issue generator workflow
-              curl -X POST \
-                -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-                -H "Accept: application/vnd.github.v3+json" \
-                "https://api.github.com/repos/${{ github.repository }}/dispatches" \
-                -d "{\"event_type\":\"dotfiles-pr-event\",\"client_payload\":{\"pr_number\":\"$PR_NUMBER\",\"trigger_type\":\"merged\"}}"
+              gh api repos/${{ github.repository }}/dispatches \
+                -f event_type=dotfiles-pr-event \
+                -f client_payload="{\"pr_number\":\"$PR_NUMBER\",\"trigger_type\":\"merged\"}"
               
               # Add to processed list
               echo "$PR_NUMBER" >> "$PROCESSED_FILE"

@@ -25,6 +25,9 @@ jobs:
       - name: Checkout tech-skills-gym repo
         uses: actions/checkout@v3
         
+      - name: Setup GitHub CLI
+        uses: cli/setup-gh@v1
+        
       - name: Get PR details
         id: pr-details
         run: |
@@ -39,21 +42,31 @@ jobs:
       - name: Fetch PR details from dotfiles repo
         id: fetch-pr
         run: |
-          PR_DATA=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-            "https://api.github.com/repos/atxtechbro/dotfiles/pulls/${{ env.PR_NUMBER }}")
+          # Get PR data using GitHub CLI
+          PR_JSON=$(gh pr view ${{ env.PR_NUMBER }} --repo atxtechbro/dotfiles --json title,url,author,createdAt,updatedAt,mergedAt,mergedBy,body,baseRefName,headRefName,state,merged)
           
-          # Check if PR exists
-          if [ "$(echo $PR_DATA | jq -r '.message')" == "Not Found" ]; then
+          # Check if PR exists (gh will exit with error if PR doesn't exist)
+          if [ $? -ne 0 ]; then
             echo "::error::PR #${{ env.PR_NUMBER }} not found in atxtechbro/dotfiles repository"
             exit 1
           fi
           
-          # Get PR state
-          PR_STATE=$(echo $PR_DATA | jq -r .state)
-          PR_MERGED=$(echo $PR_DATA | jq -r .merged)
+          # Extract PR details
+          echo "PR_TITLE=$(echo $PR_JSON | jq -r .title)" >> $GITHUB_ENV
+          echo "PR_URL=$(echo $PR_JSON | jq -r .url)" >> $GITHUB_ENV
+          echo "PR_AUTHOR=$(echo $PR_JSON | jq -r .author.login)" >> $GITHUB_ENV
+          echo "PR_CREATED_AT=$(echo $PR_JSON | jq -r .createdAt)" >> $GITHUB_ENV
+          echo "PR_UPDATED_AT=$(echo $PR_JSON | jq -r .updatedAt)" >> $GITHUB_ENV
+          echo "PR_MERGED_AT=$(echo $PR_JSON | jq -r .mergedAt)" >> $GITHUB_ENV
+          echo "PR_MERGED_BY=$(echo $PR_JSON | jq -r '.mergedBy.login // "N/A"')" >> $GITHUB_ENV
+          echo "PR_DESCRIPTION=$(echo $PR_JSON | jq -r .body)" >> $GITHUB_ENV
+          echo "PR_BASE_BRANCH=$(echo $PR_JSON | jq -r .baseRefName)" >> $GITHUB_ENV
+          echo "PR_HEAD_BRANCH=$(echo $PR_JSON | jq -r .headRefName)" >> $GITHUB_ENV
+          echo "PR_STATE=$(echo $PR_JSON | jq -r .state)" >> $GITHUB_ENV
+          echo "PR_MERGED=$(echo $PR_JSON | jq -r .merged)" >> $GITHUB_ENV
           
           # Check if we should proceed based on trigger type
-          if [ "${{ env.TRIGGER_TYPE }}" == "merged" ] && [ "$PR_MERGED" != "true" ]; then
+          if [ "${{ env.TRIGGER_TYPE }}" == "merged" ] && [ "$(echo $PR_JSON | jq -r .merged)" != "true" ]; then
             echo "Skipping because PR is not merged yet and trigger type is 'merged'"
             echo "SHOULD_PROCEED=false" >> $GITHUB_ENV
             exit 0
@@ -61,20 +74,8 @@ jobs:
             echo "SHOULD_PROCEED=true" >> $GITHUB_ENV
           fi
           
-          # Extract PR details
-          echo "PR_TITLE=$(echo $PR_DATA | jq -r .title)" >> $GITHUB_ENV
-          echo "PR_URL=$(echo $PR_DATA | jq -r .html_url)" >> $GITHUB_ENV
-          echo "PR_AUTHOR=$(echo $PR_DATA | jq -r .user.login)" >> $GITHUB_ENV
-          echo "PR_CREATED_AT=$(echo $PR_DATA | jq -r .created_at)" >> $GITHUB_ENV
-          echo "PR_UPDATED_AT=$(echo $PR_DATA | jq -r .updated_at)" >> $GITHUB_ENV
-          echo "PR_MERGED_AT=$(echo $PR_DATA | jq -r .merged_at)" >> $GITHUB_ENV
-          echo "PR_MERGED_BY=$(echo $PR_DATA | jq -r '.merged_by.login // "N/A"')" >> $GITHUB_ENV
-          echo "PR_DESCRIPTION=$(echo $PR_DATA | jq -r .body)" >> $GITHUB_ENV
-          echo "PR_BASE_BRANCH=$(echo $PR_DATA | jq -r .base.ref)" >> $GITHUB_ENV
-          echo "PR_HEAD_BRANCH=$(echo $PR_DATA | jq -r .head.ref)" >> $GITHUB_ENV
-          
           # Create a sanitized ID for the issue
-          ISSUE_ID=$(echo "${{ env.PR_NUMBER }}-$(echo $PR_DATA | jq -r .title)" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]/-/g' | sed 's/--*/-/g' | sed 's/^-//' | sed 's/-$//')
+          ISSUE_ID=$(echo "${{ env.PR_NUMBER }}-$(echo $PR_JSON | jq -r .title)" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]/-/g' | sed 's/--*/-/g' | sed 's/^-//' | sed 's/-$//')
           echo "ISSUE_ID=$ISSUE_ID" >> $GITHUB_ENV
       
       - name: Check if we should proceed
@@ -86,9 +87,8 @@ jobs:
       - name: Get PR diff
         id: get-diff
         run: |
-          PR_DIFF=$(curl -s -H "Accept: application/vnd.github.v3.diff" \
-            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-            "https://api.github.com/repos/atxtechbro/dotfiles/pulls/${{ env.PR_NUMBER }}")
+          # Get PR diff using GitHub CLI
+          PR_DIFF=$(gh pr diff ${{ env.PR_NUMBER }} --repo atxtechbro/dotfiles)
           
           echo "PR_DIFF<<EOF" >> $GITHUB_ENV
           echo "$PR_DIFF" >> $GITHUB_ENV
@@ -97,11 +97,11 @@ jobs:
       - name: Get PR files
         id: get-files
         run: |
-          PR_FILES=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-            "https://api.github.com/repos/atxtechbro/dotfiles/pulls/${{ env.PR_NUMBER }}/files")
+          # Get files changed using GitHub CLI
+          PR_FILES_JSON=$(gh pr view ${{ env.PR_NUMBER }} --repo atxtechbro/dotfiles --json files)
           
           # Format files list
-          FILES_LIST=$(echo $PR_FILES | jq -r '.[] | "- **" + .filename + "** (" + .status + ", " + (.changes | tostring) + " changes)"')
+          FILES_LIST=$(echo $PR_FILES_JSON | jq -r '.files[] | "- **" + .path + "** (" + .status + ", " + (.additions + .deletions | tostring) + " changes)"')
           
           echo "FILES_LIST<<EOF" >> $GITHUB_ENV
           echo "$FILES_LIST" >> $GITHUB_ENV
@@ -109,18 +109,22 @@ jobs:
           
           # Get raw file contents for each file
           echo "FILE_CONTENTS<<EOF" >> $GITHUB_ENV
-          echo $PR_FILES | jq -r '.[] | select(.status != "removed") | "### " + .filename + "\n\n```\n" + (.raw_url | @sh) + "\n```\n"' | \
-          while read -r line; do
+          echo $PR_FILES_JSON | jq -r '.files[] | select(.status != "removed") | "### " + .path + "\n\n```\n"' | while read -r line; do
             if [[ $line == \#\#\#* ]]; then
               echo "$line"
+              # Extract filename from the line
+              FILENAME=$(echo "$line" | sed 's/### //')
+              # Skip to next iteration
+              continue
             elif [[ $line == \`\`\`* ]]; then
               echo '```'
-            else
-              # Remove quotes from the raw_url
-              RAW_URL=$(echo $line | sed 's/^.\(.*\).$/\1/')
-              # Fetch the file content
-              FILE_CONTENT=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" "$RAW_URL")
-              echo "$FILE_CONTENT"
+              # Get file content from the PR head branch
+              if [ -n "$FILENAME" ]; then
+                gh api repos/atxtechbro/dotfiles/contents/$FILENAME?ref=${{ env.PR_HEAD_BRANCH }} --jq '.content' | base64 -d
+                echo ""
+                echo '```'
+                FILENAME=""
+              fi
             fi
           done
           echo "EOF" >> $GITHUB_ENV
@@ -128,11 +132,11 @@ jobs:
       - name: Get PR comments
         id: get-comments
         run: |
-          PR_COMMENTS=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-            "https://api.github.com/repos/atxtechbro/dotfiles/issues/${{ env.PR_NUMBER }}/comments")
+          # Get PR comments using GitHub CLI
+          PR_COMMENTS_JSON=$(gh pr view ${{ env.PR_NUMBER }} --repo atxtechbro/dotfiles --json comments)
           
           # Format comments
-          COMMENTS_LIST=$(echo $PR_COMMENTS | jq -r '.[] | "### Comment by " + .user.login + " at " + .created_at + "\n\n" + .body + "\n"')
+          COMMENTS_LIST=$(echo $PR_COMMENTS_JSON | jq -r '.comments[] | "### Comment by " + .author.login + " at " + .createdAt + "\n\n" + .body + "\n"')
           
           echo "COMMENTS_LIST<<EOF" >> $GITHUB_ENV
           echo "$COMMENTS_LIST" >> $GITHUB_ENV
@@ -141,11 +145,11 @@ jobs:
       - name: Get PR commits
         id: get-commits
         run: |
-          PR_COMMITS=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-            "https://api.github.com/repos/atxtechbro/dotfiles/pulls/${{ env.PR_NUMBER }}/commits")
+          # Get PR commits using GitHub CLI
+          PR_COMMITS_JSON=$(gh pr view ${{ env.PR_NUMBER }} --repo atxtechbro/dotfiles --json commits)
           
           # Format commits
-          COMMITS_LIST=$(echo $PR_COMMITS | jq -r '.[] | "- **" + (.commit.author.date) + "**: " + .commit.message')
+          COMMITS_LIST=$(echo $PR_COMMITS_JSON | jq -r '.commits[] | "- **" + .committedDate + "**: " + .messageHeadline')
           
           echo "COMMITS_LIST<<EOF" >> $GITHUB_ENV
           echo "$COMMITS_LIST" >> $GITHUB_ENV
@@ -154,14 +158,13 @@ jobs:
       - name: Check for existing issue
         id: check-issue
         run: |
-          # Search for issues with our ID in the title
-          ISSUES=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-            "https://api.github.com/search/issues?q=repo:${{ github.repository }}+is:issue+in:title+dotfiles-pr-${{ env.PR_NUMBER }}")
+          # Search for issues with our PR number in the title
+          ISSUES_JSON=$(gh issue list --repo ${{ github.repository }} --search "in:title Dotfiles PR #${{ env.PR_NUMBER }}" --json number,title)
           
-          ISSUE_COUNT=$(echo $ISSUES | jq -r '.total_count')
+          ISSUE_COUNT=$(echo $ISSUES_JSON | jq '. | length')
           
           if [ "$ISSUE_COUNT" -gt "0" ]; then
-            ISSUE_NUMBER=$(echo $ISSUES | jq -r '.items[0].number')
+            ISSUE_NUMBER=$(echo $ISSUES_JSON | jq -r '.[0].number')
             echo "ISSUE_EXISTS=true" >> $GITHUB_ENV
             echo "EXISTING_ISSUE_NUMBER=$ISSUE_NUMBER" >> $GITHUB_ENV
           else
