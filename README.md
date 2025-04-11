@@ -1,24 +1,24 @@
-# Adaptive Session Coach: AI-Powered Skill Development
+# Tech Skills Gym
 
-AI training helped me achieve world-class results in the gym (2023-2025). Now I'm applying those same principles to rapidly level up my tech skills.
+A personal training ground where I apply progressive overload principles from bodybuilding to technical skill development.
+
+## Core philosophy
+
+Technical mastery follows the same feedback loops as physical training:
+- Set clear goals → Track performance → Identify weaknesses → Target challenges → Progressive skill building
 
 ## What's here
 
-- Structured learning paths that follow gym-style progressive overload
-- AI coaching sessions that adapt to my specific weaknesses
-- A record of real skills I'm actively developing
+This repo serves as my AI-powered coaching environment - creating a flywheel between:
+- Structured learning paths with progressive difficulty
+- Personalized technical exercises following the 5% rule (just beyond comfort zone)
+- Systems thinking approach connecting isolated skills into cohesive expertise
 
-## Core idea
+## Connect
 
-The same feedback loops that work in physical training can work for technical skills:
-- Set clear goals
-- Track performance
-- Identify weaknesses
-- Target specific challenges
-- Progressive skill building
+- [My dotfiles](https://github.com/atxtechbro/dotfiles) - Configuration as meticulously tracked as macros
+- [GitHub profile](https://github.com/atxtechbro) - Where my passion for continuous learning lives
 
 ## Current focus
 
-Backend, Linux, CI/CD, operating systems, and hardware - using AI as my learning accelerator.
-
-This repo is my experiment in creating a flywheel between AI coaching, skill development, and systems thinking.
+Backend, Linux, CI/CD, operating systems, and hardware - committed to daily 1% improvements.
