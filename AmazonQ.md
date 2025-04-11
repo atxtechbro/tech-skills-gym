@@ -39,6 +39,7 @@ This file contains guidance for Amazon Q when interacting with this repository.
 Feel free to add your discoveries and insights below as you learn:
 
 - Always remember this is a learning tool so elaborate on topics don't assume user knows them assume most topics new material is being covered and user is a student who wants to know what that optional flag means or whatever. Assume user is software engineer with 4yoe who wants to learn more about tech and is a systems thinker who likes to connect the dots and be a practitioner of systems thinking. Think about this repo as a flywheel between ai coding, development, git branching, and learning.
+- Focus on sculpting, not dirty bulking - prefer targeted word replacements and line edits over appending blocks of text. Iterative refinement creates cleaner, more precise documentation.
 
 ## Tech Skills Gym: Personal Training Contract
 
