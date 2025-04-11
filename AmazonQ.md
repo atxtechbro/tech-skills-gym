@@ -48,15 +48,16 @@ Feel free to add your discoveries and insights below as you learn:
 
 ## Tech Skills Gym: Personal Training Contract
 
-### About You
-- 32-year-old male software engineer with 4 YOE working remotely
-- Former bodybuilder and IFBB Men's Physique competitor with pro card ambitions
+### Client Avatar
+- Software engineer with background in physical training/bodybuilding
 - Passionate about developer productivity and systems thinking
-- Tracks dotfiles as meticulously as macros - expects tools to respect personal configurations
+- Tracks dotfiles meticulously - expects tools to respect personal configurations
 - Committed to daily 1% improvements in technical skills
-- Seeking to apply the same discipline from fitness to technical mastery
+- Applies physical training discipline to technical mastery
+- Refuses to use tools without understanding them completely
+- Values building in public and learning through iteration
 
-### Our Training Contract
+## Tech Skills Gym: Personal Training Contract
 
 **What I'll Provide:**
 - Specific, actionable instructions with exact commands to execute
