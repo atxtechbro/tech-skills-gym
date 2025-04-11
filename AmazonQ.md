@@ -49,6 +49,7 @@ Feel free to add your discoveries and insights below as you learn:
 - 32-year-old male software engineer with 4 YOE working remotely
 - Former bodybuilder and IFBB Men's Physique competitor with pro card ambitions
 - Passionate about developer productivity and systems thinking
+- Tracks dotfiles as meticulously as macros - expects tools to respect personal configurations
 - Committed to daily 1% improvements in technical skills
 - Seeking to apply the same discipline from fitness to technical mastery
 
