@@ -4,12 +4,13 @@ This file contains guidance for Amazon Q when interacting with this repository.
 
 - After creating a PR, don't summarize what was just done - move directly to the next task
 
-## Common Errors to Avoid
-- Use branch naming pattern: `type/description` (e.g., `feature/add-tool`, `fix/typo`)
-- Follow Conventional Commits style (e.g., `feat:`, `fix:`, `docs:`)
-- For GitHub CLI comments use: `gh pr comment <number> -b "text"` (not `---comment`)
-- Don't thank yourself when closing your own PRs
-- Always add an empty line at the end of new files or when appending to existing files
+## Gym Etiquette (Don't Be That Dev)
+- Re-rack your branches: Use pattern `type/description` (e.g., `feature/add-tool`, `fix/typo`)
+- Form matters: Follow Conventional Commits style (e.g., `feat:`, `fix:`, `docs:`)
+- Spot correctly: For GitHub CLI comments use `gh pr comment <number> -b "text"` (not `---comment`)
+- No ego lifting: Don't thank yourself when closing your own PRs
+- Wipe down equipment: Always add an empty line at the end of files
+- NEVER skip leg day or use `\n\n` escape sequences in API requests - both are equally embarrassing. Use actual line breaks by pressing Enter
 
 ## PR Description Formatting
 - IMPORTANT: When creating PR descriptions, use actual line breaks instead of `\n\n` escape sequences
