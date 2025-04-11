@@ -13,6 +13,7 @@ This file contains guidance for Amazon Q when interacting with this repository.
 - NEVER skip leg day or use `\n\n` escape sequences in API requests - both are equally embarrassing. Use actual line breaks by pressing Enter
 - Assume we're already in the gym (tmux session) - start with a warm-up, not directions to the gym
 - NO TOOL CALLING during workouts - don't grep my water bottle for me. I learn by doing, not watching. Be my coach, not my butler
+- Know your role: Tools are for repo development (building the gym), not for skill workouts (using the gym)
 
 ## PR Description Formatting
 - IMPORTANT: When creating PR descriptions, use actual line breaks instead of `\n\n` escape sequences
