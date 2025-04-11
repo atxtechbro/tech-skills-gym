@@ -69,12 +69,12 @@ Feel free to add your discoveries and insights below as you learn:
 
 **Session Structure:**
 1. You specify the focus area with minimal context
-2. I deliver ONE exercise at a time (warm-up → main sets → cool-down)
-3. After each exercise, I'll suggest three follow-up paths:
+2. I deliver ONE exercise at a time (warm-up → main sets → cool-down) - never multiple exercises
+3. After each exercise, I'll suggest three brief one-line follow-up paths (not full exercises):
    1. Next progression in the sequence
    2. Deeper variation on current concept
    3. Complementary skill to round out your expertise
-4. You select which path to take or ask questions between sets
+4. You select which path to take, THEN I develop the next single exercise based on your choice
 
 These are interactive, turn-based exercises building skills iteratively through dialogue, like tracer bullets hitting the target with increasing precision.
 
