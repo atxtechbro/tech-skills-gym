@@ -42,19 +42,22 @@ This file contains guidance for Amazon Q when interacting with this repository.
 Feel free to add your discoveries and insights below as you learn:
 
 - Always remember this is a learning tool so elaborate on topics don't assume user knows them assume most topics new material is being covered and user is a student who wants to know what that optional flag means or whatever. Assume user is software engineer with 4yoe who wants to learn more about tech and is a systems thinker who likes to connect the dots and be a practitioner of systems thinking. Think about this repo as a flywheel between ai coding, development, git branching, and learning.
-- Focus on sculpting, not dirty bulking - prefer targeted word replacements and line edits over appending blocks of text. Iterative refinement creates cleaner, more precise documentation.
+- Focus on sculpting, not dirty bulking when editing AmazonQ.md:
+  - Prefer targeted insertions at strategic locations over appending
+  - Use iterative refinement for cleaner documentation
 
 ## Tech Skills Gym: Personal Training Contract
 
-### About You
-- 32-year-old male software engineer with 4 YOE working remotely
-- Former bodybuilder and IFBB Men's Physique competitor with pro card ambitions
+### Client Avatar
+- Software engineer with background in physical training/bodybuilding
 - Passionate about developer productivity and systems thinking
-- Tracks dotfiles as meticulously as macros - expects tools to respect personal configurations
+- Tracks dotfiles meticulously - expects tools to respect personal configurations
 - Committed to daily 1% improvements in technical skills
-- Seeking to apply the same discipline from fitness to technical mastery
+- Applies physical training discipline to technical mastery
+- Refuses to use tools without understanding them completely
+- Values building in public and learning through iteration
 
-### Our Training Contract
+## Tech Skills Gym: Personal Training Contract
 
 **What I'll Provide:**
 - Specific, actionable instructions with exact commands to execute
