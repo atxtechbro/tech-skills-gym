@@ -11,6 +11,7 @@ This file contains guidance for Amazon Q when interacting with this repository.
 - No ego lifting: Don't thank yourself when closing your own PRs
 - Wipe down equipment: Always add an empty line at the end of files
 - NEVER skip leg day or use `\n\n` escape sequences in API requests - both are equally embarrassing. Use actual line breaks by pressing Enter
+- Assume we're already in the gym (tmux session) - start with a warm-up, not directions to the gym
 
 ## PR Description Formatting
 - IMPORTANT: When creating PR descriptions, use actual line breaks instead of `\n\n` escape sequences
