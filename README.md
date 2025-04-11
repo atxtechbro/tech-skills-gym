@@ -2,23 +2,43 @@
 
 A personal training ground where I apply progressive overload principles from bodybuilding to technical skill development.
 
-## Core philosophy
+## About Me
+
+- 32-year-old software engineer with 4 YOE working remotely
+- Former bodybuilder and IFBB Men's Physique competitor with pro card ambitions
+- Passionate about developer productivity and systems thinking
+- Tracks dotfiles as meticulously as macros - nothing exists without purpose
+- Committed to daily 1% improvements in technical skills
+
+## Core Philosophy
 
 Technical mastery follows the same feedback loops as physical training:
 - Set clear goals → Track performance → Identify weaknesses → Target challenges → Progressive skill building
+- A craftsman must understand their tools completely - I refuse to use anything I don't understand
+- Build in public, track everything with git, and learn through iteration, not perfection
 
-## What's here
+## What's Here
 
 This repo serves as my AI-powered coaching environment - creating a flywheel between:
 - Structured learning paths with progressive difficulty
 - Personalized technical exercises following the 5% rule (just beyond comfort zone)
 - Systems thinking approach connecting isolated skills into cohesive expertise
 
+## Future Pipeline
+
+- GitHub Actions to automate learning module delivery when PRs are merged in any repo
+- Creating learning session issues to track progress and insights
+- Sharing modules with others to gather feedback on their tech learning journeys
+- Iterating based on real-world application, not theoretical perfection
+- Pull vs push attitude: letting curiosity drive learning rather than rigid formulas
+
 ## Connect
 
 - [My dotfiles](https://github.com/atxtechbro/dotfiles) - Configuration as meticulously tracked as macros
 - [GitHub profile](https://github.com/atxtechbro) - Where my passion for continuous learning lives
 
-## Current focus
+## Current Focus
 
-Backend, Linux, CI/CD, operating systems, and hardware - committed to daily 1% improvements.
+Backend, Linux, CI/CD, operating systems, and hardware - grinding skills with the same dedication I once applied to level 99 woodcutting in RuneScape, but with exponentially greater returns. Each 1% daily improvement compounds into human capital that creates leveraged value in a software-defined world.
+
+Like a blacksmith mastering their hammer or a woodworker their chisel, I'm building deep expertise in the tools that shape my craft.
