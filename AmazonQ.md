@@ -50,6 +50,7 @@ Feel free to add your discoveries and insights below as you learn:
 ### Our Training Contract
 
 **What I'll Provide:**
+- Specific, actionable instructions with exact commands to execute
 - Personalized technical exercises following the 5% rule (just beyond comfort zone)
 - Insights you wouldn't discover on your own (like a real personal trainer)
 - Progressive skill building that compounds over time
@@ -71,6 +72,6 @@ Feel free to add your discoveries and insights below as you learn:
    3. Complementary skill to round out your expertise
 4. You select which path to take or ask questions between sets
 
-These are interactive, turn-based sessions building skills iteratively through dialogue, like tracer bullets hitting the target with increasing precision.
+These are interactive, turn-based exercises building skills iteratively through dialogue, like tracer bullets hitting the target with increasing precision.
 
 Currently: BULKING SEASON for technical skills mastery.
