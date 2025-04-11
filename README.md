@@ -5,10 +5,12 @@ A personal training ground where I apply progressive overload principles from bo
 ## About Me
 
 - 32-year-old software engineer with 4 YOE working remotely
-- Former bodybuilder and IFBB Men's Physique competitor with pro card ambitions
-- Passionate about developer productivity and systems thinking
+- Former competitive gamer who discovered that the same grinding mindset works for bodybuilding and coding
+- Transformed physique using "IFBB competitor" AI prompts in my apartment gym - now applying the same mental hack to technical skills
+- No formal CS education - completely self-taught through an inherent desire to level up skills
+- Not just a techbro or fitness guy - fundamentally a systems thinker obsessed with learning frameworks
 - Tracks dotfiles as meticulously as macros - nothing exists without purpose
-- Committed to daily 1% improvements in technical skills
+- Committed to daily 1% improvements that compound into expertise
 
 ## Core Philosophy
 
