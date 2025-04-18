@@ -38,11 +38,6 @@ A training ground applying progressive overload principles to technical skill de
    - Paste it into the custom instructions field (Ctrl+V)
 4. Begin your training session with: "spot me bro [focus area]"
 
-### For Claude:
-1. Start a new Claude conversation
-2. Link it to: `https://raw.githubusercontent.com/atxtechbro/tech-skills-gym/refs/heads/main/INSTRUCTIONS.json`
-3. Begin your training session with: "spot me bro [focus area]"
-
 > **Note:** We're looking for contributions to improve Claude instructions. If you're a Claude user and have insights on using projects or other features, please contribute to [GitHub Issue #TBD](https://github.com/atxtechbro/tech-skills-gym/issues).
 
 That's it! The AI will guide you through progressive technical exercises following the training framework.
