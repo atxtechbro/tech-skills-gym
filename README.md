@@ -12,15 +12,11 @@ That's it! The AI will guide you through progressive technical exercises followi
 
 ## Example Training Prompts
 
-Here are some examples of how users might start their training sessions:
-
 - `spot me bro kubernetes - i'm trying to learn about service meshes`
 - `hey spot me bro with some golang, i've been coding for about 2 years`
 - `SPOT ME BRO! need to get better at system design interviews ASAP!!`
 - `spot me bro bash scripting please. i'm a complete beginner.`
 - `can you spot me on react hooks? i understand components but hooks confuse me`
-
-The AI trainer will adapt to different styles, experience levels, and specific focus areas within each technical domain.
 
 ## What's in INSTRUCTIONS.json
 
