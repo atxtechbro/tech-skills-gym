@@ -10,7 +10,7 @@ A training ground applying progressive overload principles to technical skill de
 
 That's it! The AI will guide you through progressive technical exercises following the training framework.
 
-## Example Training Prompts
+## Example Initial User Inputs
 
 - `spot me bro kubernetes - i'm trying to learn about service meshes`
 - `hey spot me bro with some golang, i've been coding for about 2 years`
