@@ -5,15 +5,26 @@ A training ground applying progressive overload principles to technical skill de
 ## How to Use
 
 ### For ChatGPT:
-1. Start a new ChatGPT conversation
-2. Click on "Custom instructions" in the settings
-3. In the "How would you like ChatGPT to respond?" section:
+1. Create a dedicated project:
+   - Click on "Projects" in the left sidebar
+   - Click "+ New project"
+   - Enter name "tech-skills-gym" (or your preferred name)
+   - Click "Create project"
+
+2. Add custom instructions to your project:
+   - Under your new project, click "Add instructions"
    - Visit: https://raw.githubusercontent.com/atxtechbro/tech-skills-gym/refs/heads/main/INSTRUCTIONS.json
    - Press Ctrl+A to select all content
    - Copy the entire content (Ctrl+C)
-   - Paste it into the custom instructions field (Ctrl+V)
+   - Paste it into the project instructions field (Ctrl+V)
+   - Save the instructions
 
-4. Begin your training session with: "spot me bro [focus area]"
+3. Begin your training session with: "spot me bro [focus area]"
+
+4. You can create multiple sessions within this project for different focus areas:
+   - "spot me bro kubernetes"
+   - "spot me bro golang"
+   - etc.
 
 ### For Claude:
 1. Start a new Claude conversation
