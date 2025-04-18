@@ -5,18 +5,38 @@ A training ground applying progressive overload principles to technical skill de
 ## How to Use
 
 ### For ChatGPT:
+
+#### Option 1: Using Projects (Recommended for Multiple Sessions)
+1. Create a dedicated project:
+   - Click on "Projects" in the left sidebar
+   - Click "+ New project"
+   - Enter name "tech-skills-gym" (or your preferred name)
+   - Click "Create project"
+
+2. Add custom instructions to your project:
+   - Under your new project, click "Add instructions"
+   - Visit: https://raw.githubusercontent.com/atxtechbro/tech-skills-gym/refs/heads/main/INSTRUCTIONS.json
+   - Press Ctrl+A to select all content
+   - Copy the entire content (Ctrl+C)
+   - Paste it into the project instructions field (Ctrl+V)
+   - Save the instructions
+
+3. Begin your training session with: "spot me bro [focus area]"
+
+4. You can create multiple sessions within this project for different focus areas:
+   - "spot me bro kubernetes"
+   - "spot me bro golang"
+   - etc.
+
+#### Option 2: Using Custom Instructions
 1. Start a new ChatGPT conversation
 2. Click on "Custom instructions" in the settings
-3. In the "How would you like ChatGPT to respond?" section, paste:
-   ```
-   Please load and follow the instructions from this URL: https://raw.githubusercontent.com/atxtechbro/tech-skills-gym/refs/heads/main/INSTRUCTIONS.json
-   ```
-4. Alternatively, use the ChatGPT Advanced Data Analysis feature and ask it to:
-   ```
-   curl https://raw.githubusercontent.com/atxtechbro/tech-skills-gym/refs/heads/main/INSTRUCTIONS.json | jq
-   ```
-   Then ask it to "Follow these instructions for our conversation"
-5. Begin your training session with: "spot me bro [focus area]"
+3. In the "How would you like ChatGPT to respond?" section:
+   - Visit: https://raw.githubusercontent.com/atxtechbro/tech-skills-gym/refs/heads/main/INSTRUCTIONS.json
+   - Press Ctrl+A to select all content
+   - Copy the entire content (Ctrl+C)
+   - Paste it into the custom instructions field (Ctrl+V)
+4. Begin your training session with: "spot me bro [focus area]"
 
 ### For Claude:
 1. Start a new Claude conversation
