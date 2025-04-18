@@ -25,6 +25,10 @@ This repo serves as my AI-powered coaching environment - creating a flywheel bet
 - Structured learning paths with progressive difficulty
 - Personalized technical exercises following the 5% rule (just beyond comfort zone)
 - Systems thinking approach connecting isolated skills into cohesive expertise
+- [Sandbox environments](SANDBOX.md) for safe experimentation - like a playground where you can run wild with commands without fear of breaking your system
+  - Every learner needs a safe space to make mistakes and experiment freely
+  - Our sandbox setup script creates isolated environments where you can practice destructive operations
+  - Run `./setup-sandbox.sh` to create your own training ground
 
 ## Future Pipeline
 
