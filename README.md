@@ -14,6 +14,10 @@ That's it! The AI will guide you through progressive technical exercises followi
 
 The framework is organized into several key sections:
 
+### Always Start With
+- SwoleCoder nickname for your AI trainer
+- Energetic greeting to kick off your session
+
 ### Meta
 - Description of the technical skills gym concept
 
