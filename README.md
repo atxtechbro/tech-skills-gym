@@ -29,6 +29,7 @@ This repo serves as my AI-powered coaching environment - creating a flywheel bet
   - Every learner needs a safe space to make mistakes and experiment freely
   - Our sandbox setup script creates isolated environments where you can practice destructive operations
   - Run `./setup-sandbox.sh` to create your own training ground
+- [Training framework and methodology](INSTRUCTIONS.json) - detailed structure for progressive skill development
 
 ## Future Pipeline
 
