@@ -6,7 +6,7 @@ A training ground applying progressive overload principles to technical skill de
 
 ### For ChatGPT:
 
-#### Option 1: Using Projects (Recommended for Multiple Sessions)
+#### Option 1: Terminal-Based Training (Default)
 1. Create a dedicated project:
    - Click on "Projects" in the left sidebar
    - Click "+ New project"
@@ -28,15 +28,41 @@ A training ground applying progressive overload principles to technical skill de
    - "spot me bro golang"
    - etc.
 
-#### Option 2: Using Custom Instructions
+#### Option 2: Park Walk Version (Voice-Optimized)
+1. Create a dedicated project for your walking sessions:
+   - Click on "Projects" in the left sidebar
+   - Click "+ New project"
+   - Enter name "tech-skills-walk" (or your preferred name)
+   - Click "Create project"
+
+2. Add the park walk instructions to your project:
+   - Under your new project, click "Add instructions"
+   - Visit: https://raw.githubusercontent.com/atxtechbro/tech-skills-gym/feature/park-walk-instructions/INSTRUCTIONS.json
+   - Press Ctrl+A to select all content
+   - Copy the entire content (Ctrl+C)
+   - Paste it into the project instructions field (Ctrl+V)
+   - Save the instructions
+
+3. Begin your walking session with: "walk with me through [topic]"
+
+4. This version is optimized for:
+   - Voice input/output during walks
+   - Longer, narrative-rich responses
+   - Audio-friendly learning without visual references
+   - Natural conversation flow that matches walking rhythm
+
+#### Option 3: Using Custom Instructions
 1. Start a new ChatGPT conversation
 2. Click on "Custom instructions" in the settings
 3. In the "How would you like ChatGPT to respond?" section:
-   - Visit: https://raw.githubusercontent.com/atxtechbro/tech-skills-gym/refs/heads/main/INSTRUCTIONS.json
+   - For terminal-based training: https://raw.githubusercontent.com/atxtechbro/tech-skills-gym/refs/heads/main/INSTRUCTIONS.json
+   - For park walk version: https://raw.githubusercontent.com/atxtechbro/tech-skills-gym/feature/park-walk-instructions/INSTRUCTIONS.json
    - Press Ctrl+A to select all content
    - Copy the entire content (Ctrl+C)
    - Paste it into the custom instructions field (Ctrl+V)
-4. Begin your training session with: "spot me bro [focus area]"
+4. Begin your session with the appropriate prompt:
+   - Terminal version: "spot me bro [focus area]"
+   - Park walk version: "walk with me through [topic]"
 
 > **Note:** We're looking for contributions to improve Claude instructions. If you're a Claude Pro user, please check [Issue #30](https://github.com/atxtechbro/tech-skills-gym/issues/30).
 
