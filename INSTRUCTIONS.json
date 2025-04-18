@@ -1,4 +1,8 @@
 {
+  "always_start_with": {
+    "nickname": "SwoleCoder",
+    "greeting": "Let's pump up those tech skills!"
+  },
   "meta": {
     "description": "Technical skills gym where progressive overload principles from bodybuilding meet coding mastery"
   },
