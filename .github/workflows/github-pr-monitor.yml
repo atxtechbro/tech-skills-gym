@@ -1,0 +1,81 @@
+name: GitHub PR Monitor
+
+on:
+  workflow_dispatch:
+    inputs:
+      repo_name:
+        description: 'GitHub repository to monitor (format: owner/repo)'
+        required: true
+        default: 'atxtechbro/dotfiles'
+  schedule:
+    # Run every hour
+    - cron: '0 * * * *'
+
+jobs:
+  monitor-prs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Determine repository to monitor
+        id: get-repo
+        run: |
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            echo "REPO_NAME=${{ github.event.inputs.repo_name }}" >> $GITHUB_ENV
+          else
+            # Default repository to monitor from config file
+            if [ -f ".github/pr-monitor-config.txt" ]; then
+              REPO_NAME=$(cat .github/pr-monitor-config.txt | grep -v "^#" | head -n 1)
+              echo "REPO_NAME=$REPO_NAME" >> $GITHUB_ENV
+            else
+              echo "REPO_NAME=atxtechbro/dotfiles" >> $GITHUB_ENV
+              echo "Using default repository: atxtechbro/dotfiles"
+            fi
+          fi
+          
+          # Extract repo short name for file naming
+          REPO_SHORT_NAME=$(echo "${{ env.REPO_NAME }}" | cut -d '/' -f2)
+          echo "REPO_SHORT_NAME=$REPO_SHORT_NAME" >> $GITHUB_ENV
+      
+      - name: Check for merged PRs
+        id: check-prs
+        run: |
+          # Get list of recently merged PRs
+          MERGED_PRS=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/repos/${{ env.REPO_NAME }}/pulls?state=closed&sort=updated&direction=desc&per_page=10" | \
+            jq -r '.[] | select(.merged_at != null) | .number')
+          
+          # Create a file to store PR numbers we've already processed
+          mkdir -p .github/pr-monitor
+          PROCESSED_FILE=.github/pr-monitor/${{ env.REPO_SHORT_NAME }}-processed-prs.txt
+          
+          if [ ! -f "$PROCESSED_FILE" ]; then
+            touch "$PROCESSED_FILE"
+          fi
+          
+          # Check each PR
+          for PR_NUMBER in $MERGED_PRS; do
+            if ! grep -q "^$PR_NUMBER$" "$PROCESSED_FILE"; then
+              echo "Found newly merged PR: $PR_NUMBER in ${{ env.REPO_NAME }}"
+              
+              # Trigger the issue generator workflow
+              curl -X POST \
+                -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+                -H "Accept: application/vnd.github.v3+json" \
+                "https://api.github.com/repos/${{ github.repository }}/dispatches" \
+                -d "{\"event_type\":\"github-pr-event\",\"client_payload\":{\"pr_number\":\"$PR_NUMBER\",\"trigger_type\":\"merged\",\"repo_name\":\"${{ env.REPO_NAME }}\"}}"
+              
+              # Add to processed list
+              echo "$PR_NUMBER" >> "$PROCESSED_FILE"
+            fi
+          done
+          
+          # Commit the updated processed file
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+          git add "$PROCESSED_FILE"
+          git commit -m "chore: update processed PRs list for ${{ env.REPO_SHORT_NAME }}" || echo "No changes to commit"
+          git push origin main || echo "No changes to push"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

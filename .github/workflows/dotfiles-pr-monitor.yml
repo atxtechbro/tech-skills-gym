@@ -1,0 +1,53 @@
+name: Dotfiles PR Monitor
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Run every hour
+    - cron: '0 * * * *'
+
+jobs:
+  monitor-prs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check for merged PRs
+        id: check-prs
+        run: |
+          # Get list of recently merged PRs
+          MERGED_PRS=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/repos/atxtechbro/dotfiles/pulls?state=closed&sort=updated&direction=desc&per_page=10" | \
+            jq -r '.[] | select(.merged_at != null) | .number')
+          
+          # Create a file to store PR numbers we've already processed
+          mkdir -p .github/dotfiles-monitor
+          PROCESSED_FILE=.github/dotfiles-monitor/processed-prs.txt
+          
+          if [ ! -f "$PROCESSED_FILE" ]; then
+            touch "$PROCESSED_FILE"
+          fi
+          
+          # Check each PR
+          for PR_NUMBER in $MERGED_PRS; do
+            if ! grep -q "^$PR_NUMBER$" "$PROCESSED_FILE"; then
+              echo "Found newly merged PR: $PR_NUMBER"
+              
+              # Trigger the issue generator workflow
+              curl -X POST \
+                -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+                -H "Accept: application/vnd.github.v3+json" \
+                "https://api.github.com/repos/${{ github.repository }}/dispatches" \
+                -d "{\"event_type\":\"dotfiles-pr-event\",\"client_payload\":{\"pr_number\":\"$PR_NUMBER\",\"trigger_type\":\"merged\"}}"
+              
+              # Add to processed list
+              echo "$PR_NUMBER" >> "$PROCESSED_FILE"
+            fi
+          done
+          
+          # Commit the updated processed file
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+          git add "$PROCESSED_FILE"
+          git commit -m "chore: update processed PRs list" || echo "No changes to commit"
+          git push origin main || echo "No changes to push"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

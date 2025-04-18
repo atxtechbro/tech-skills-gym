@@ -1,0 +1,253 @@
+name: Dotfiles PR Issue Generator
+
+on:
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: 'PR number in dotfiles repo to analyze'
+        required: true
+      trigger_type:
+        description: 'When to trigger (created, updated, merged)'
+        required: true
+        default: 'merged'
+        type: choice
+        options:
+          - created
+          - updated
+          - merged
+  repository_dispatch:
+    types: [dotfiles-pr-event]
+
+jobs:
+  generate-issue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout tech-skills-gym repo
+        uses: actions/checkout@v3
+        
+      - name: Get PR details
+        id: pr-details
+        run: |
+          if [ "${{ github.event_name }}" == "repository_dispatch" ]; then
+            echo "PR_NUMBER=${{ github.event.client_payload.pr_number }}" >> $GITHUB_ENV
+            echo "TRIGGER_TYPE=${{ github.event.client_payload.trigger_type }}" >> $GITHUB_ENV
+          else
+            echo "PR_NUMBER=${{ github.event.inputs.pr_number }}" >> $GITHUB_ENV
+            echo "TRIGGER_TYPE=${{ github.event.inputs.trigger_type }}" >> $GITHUB_ENV
+          fi
+      
+      - name: Fetch PR details from dotfiles repo
+        id: fetch-pr
+        run: |
+          PR_DATA=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/repos/atxtechbro/dotfiles/pulls/${{ env.PR_NUMBER }}")
+          
+          # Check if PR exists
+          if [ "$(echo $PR_DATA | jq -r '.message')" == "Not Found" ]; then
+            echo "::error::PR #${{ env.PR_NUMBER }} not found in atxtechbro/dotfiles repository"
+            exit 1
+          fi
+          
+          # Get PR state
+          PR_STATE=$(echo $PR_DATA | jq -r .state)
+          PR_MERGED=$(echo $PR_DATA | jq -r .merged)
+          
+          # Check if we should proceed based on trigger type
+          if [ "${{ env.TRIGGER_TYPE }}" == "merged" ] && [ "$PR_MERGED" != "true" ]; then
+            echo "Skipping because PR is not merged yet and trigger type is 'merged'"
+            echo "SHOULD_PROCEED=false" >> $GITHUB_ENV
+            exit 0
+          else
+            echo "SHOULD_PROCEED=true" >> $GITHUB_ENV
+          fi
+          
+          # Extract PR details
+          echo "PR_TITLE=$(echo $PR_DATA | jq -r .title)" >> $GITHUB_ENV
+          echo "PR_URL=$(echo $PR_DATA | jq -r .html_url)" >> $GITHUB_ENV
+          echo "PR_AUTHOR=$(echo $PR_DATA | jq -r .user.login)" >> $GITHUB_ENV
+          echo "PR_CREATED_AT=$(echo $PR_DATA | jq -r .created_at)" >> $GITHUB_ENV
+          echo "PR_UPDATED_AT=$(echo $PR_DATA | jq -r .updated_at)" >> $GITHUB_ENV
+          echo "PR_MERGED_AT=$(echo $PR_DATA | jq -r .merged_at)" >> $GITHUB_ENV
+          echo "PR_MERGED_BY=$(echo $PR_DATA | jq -r '.merged_by.login // "N/A"')" >> $GITHUB_ENV
+          echo "PR_DESCRIPTION=$(echo $PR_DATA | jq -r .body)" >> $GITHUB_ENV
+          echo "PR_BASE_BRANCH=$(echo $PR_DATA | jq -r .base.ref)" >> $GITHUB_ENV
+          echo "PR_HEAD_BRANCH=$(echo $PR_DATA | jq -r .head.ref)" >> $GITHUB_ENV
+          
+          # Create a sanitized ID for the issue
+          ISSUE_ID=$(echo "${{ env.PR_NUMBER }}-$(echo $PR_DATA | jq -r .title)" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]/-/g' | sed 's/--*/-/g' | sed 's/^-//' | sed 's/-$//')
+          echo "ISSUE_ID=$ISSUE_ID" >> $GITHUB_ENV
+      
+      - name: Check if we should proceed
+        if: env.SHOULD_PROCEED != 'true'
+        run: |
+          echo "Skipping issue creation based on trigger conditions"
+          exit 0
+      
+      - name: Get PR diff
+        id: get-diff
+        run: |
+          PR_DIFF=$(curl -s -H "Accept: application/vnd.github.v3.diff" \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/repos/atxtechbro/dotfiles/pulls/${{ env.PR_NUMBER }}")
+          
+          echo "PR_DIFF<<EOF" >> $GITHUB_ENV
+          echo "$PR_DIFF" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+      
+      - name: Get PR files
+        id: get-files
+        run: |
+          PR_FILES=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/repos/atxtechbro/dotfiles/pulls/${{ env.PR_NUMBER }}/files")
+          
+          # Format files list
+          FILES_LIST=$(echo $PR_FILES | jq -r '.[] | "- **" + .filename + "** (" + .status + ", " + (.changes | tostring) + " changes)"')
+          
+          echo "FILES_LIST<<EOF" >> $GITHUB_ENV
+          echo "$FILES_LIST" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+          
+          # Get raw file contents for each file
+          echo "FILE_CONTENTS<<EOF" >> $GITHUB_ENV
+          echo $PR_FILES | jq -r '.[] | select(.status != "removed") | "### " + .filename + "\n\n```\n" + (.raw_url | @sh) + "\n```\n"' | \
+          while read -r line; do
+            if [[ $line == \#\#\#* ]]; then
+              echo "$line"
+            elif [[ $line == \`\`\`* ]]; then
+              echo '```'
+            else
+              # Remove quotes from the raw_url
+              RAW_URL=$(echo $line | sed 's/^.\(.*\).$/\1/')
+              # Fetch the file content
+              FILE_CONTENT=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" "$RAW_URL")
+              echo "$FILE_CONTENT"
+            fi
+          done
+          echo "EOF" >> $GITHUB_ENV
+      
+      - name: Get PR comments
+        id: get-comments
+        run: |
+          PR_COMMENTS=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/repos/atxtechbro/dotfiles/issues/${{ env.PR_NUMBER }}/comments")
+          
+          # Format comments
+          COMMENTS_LIST=$(echo $PR_COMMENTS | jq -r '.[] | "### Comment by " + .user.login + " at " + .created_at + "\n\n" + .body + "\n"')
+          
+          echo "COMMENTS_LIST<<EOF" >> $GITHUB_ENV
+          echo "$COMMENTS_LIST" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+      
+      - name: Get PR commits
+        id: get-commits
+        run: |
+          PR_COMMITS=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/repos/atxtechbro/dotfiles/pulls/${{ env.PR_NUMBER }}/commits")
+          
+          # Format commits
+          COMMITS_LIST=$(echo $PR_COMMITS | jq -r '.[] | "- **" + (.commit.author.date) + "**: " + .commit.message')
+          
+          echo "COMMITS_LIST<<EOF" >> $GITHUB_ENV
+          echo "$COMMITS_LIST" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+      
+      - name: Check for existing issue
+        id: check-issue
+        run: |
+          # Search for issues with our ID in the title
+          ISSUES=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/search/issues?q=repo:${{ github.repository }}+is:issue+in:title+dotfiles-pr-${{ env.PR_NUMBER }}")
+          
+          ISSUE_COUNT=$(echo $ISSUES | jq -r '.total_count')
+          
+          if [ "$ISSUE_COUNT" -gt "0" ]; then
+            ISSUE_NUMBER=$(echo $ISSUES | jq -r '.items[0].number')
+            echo "ISSUE_EXISTS=true" >> $GITHUB_ENV
+            echo "EXISTING_ISSUE_NUMBER=$ISSUE_NUMBER" >> $GITHUB_ENV
+          else
+            echo "ISSUE_EXISTS=false" >> $GITHUB_ENV
+          fi
+      
+      - name: Create or update issue
+        run: |
+          # Prepare issue body
+          cat > issue_body.md << EOL
+          # Dotfiles PR #${{ env.PR_NUMBER }}: ${{ env.PR_TITLE }}
+
+          This issue contains data from [PR #${{ env.PR_NUMBER }}](${{ env.PR_URL }}) in the dotfiles repository.
+
+          ## PR Metadata
+
+          - **Author:** ${{ env.PR_AUTHOR }}
+          - **Created:** ${{ env.PR_CREATED_AT }}
+          - **Updated:** ${{ env.PR_UPDATED_AT }}
+          - **Merged:** ${{ env.PR_MERGED_AT }}
+          - **Merged by:** ${{ env.PR_MERGED_BY }}
+          - **Base branch:** ${{ env.PR_BASE_BRANCH }}
+          - **Head branch:** ${{ env.PR_HEAD_BRANCH }}
+
+          ## PR Description
+
+          ${{ env.PR_DESCRIPTION }}
+
+          ## Files Changed
+
+          ${{ env.FILES_LIST }}
+
+          ## Commits
+
+          ${{ env.COMMITS_LIST }}
+
+          ## Comments
+
+          ${{ env.COMMENTS_LIST }}
+
+          ## File Contents
+
+          ${{ env.FILE_CONTENTS }}
+
+          ## Diff
+
+          \`\`\`diff
+          ${{ env.PR_DIFF }}
+          \`\`\`
+
+          ---
+
+          <details>
+          <summary>Learning Module Template</summary>
+
+          # Learning Module: ${{ env.PR_TITLE }}
+
+          ## Overview
+          <!-- What do these dotfile changes accomplish? Why are they valuable? -->
+
+          ## Key Concepts
+          <!-- List 3-5 technical concepts that are important to understand -->
+
+          ## Learning Objectives
+          <!-- Create 3-5 specific learning objectives -->
+
+          ## Technical Explanation
+          <!-- Provide a detailed explanation of what the changes do and how they work -->
+
+          ## Practice Exercises
+          <!-- Create 3-5 hands-on exercises to help understand these changes better -->
+
+          ## Resources
+          <!-- Suggest 3-5 resources (documentation, tutorials, etc.) for deeper learning -->
+
+          </details>
+          EOL
+          
+          if [ "${{ env.ISSUE_EXISTS }}" == "true" ]; then
+            # Update existing issue
+            gh issue edit ${{ env.EXISTING_ISSUE_NUMBER }} --body-file issue_body.md --repo ${{ github.repository }}
+            echo "Updated issue #${{ env.EXISTING_ISSUE_NUMBER }}"
+          else
+            # Create new issue
+            gh issue create --title "Dotfiles PR #${{ env.PR_NUMBER }}: ${{ env.PR_TITLE }}" --body-file issue_body.md --repo ${{ github.repository }}
+            echo "Created new issue"
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
