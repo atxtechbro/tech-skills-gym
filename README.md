@@ -4,9 +4,41 @@ A training ground applying progressive overload principles to technical skill de
 
 ## How to Use
 
-1. Start a new ChatGPT or Claude project
-2. Link it to: `https://raw.githubusercontent.com/atxtechbro/tech-skills-gym/refs/heads/main/INSTRUCTIONS.json`
+### For ChatGPT:
+
+#### Option 1: Using Projects (Recommended for Multiple Sessions)
+1. Create a dedicated project:
+   - Click on "Projects" in the left sidebar
+   - Click "+ New project"
+   - Enter name "tech-skills-gym" (or your preferred name)
+   - Click "Create project"
+
+2. Add custom instructions to your project:
+   - Under your new project, click "Add instructions"
+   - Visit: https://raw.githubusercontent.com/atxtechbro/tech-skills-gym/refs/heads/main/INSTRUCTIONS.json
+   - Press Ctrl+A to select all content
+   - Copy the entire content (Ctrl+C)
+   - Paste it into the project instructions field (Ctrl+V)
+   - Save the instructions
+
 3. Begin your training session with: "spot me bro [focus area]"
+
+4. You can create multiple sessions within this project for different focus areas:
+   - "spot me bro kubernetes"
+   - "spot me bro golang"
+   - etc.
+
+#### Option 2: Using Custom Instructions
+1. Start a new ChatGPT conversation
+2. Click on "Custom instructions" in the settings
+3. In the "How would you like ChatGPT to respond?" section:
+   - Visit: https://raw.githubusercontent.com/atxtechbro/tech-skills-gym/refs/heads/main/INSTRUCTIONS.json
+   - Press Ctrl+A to select all content
+   - Copy the entire content (Ctrl+C)
+   - Paste it into the custom instructions field (Ctrl+V)
+4. Begin your training session with: "spot me bro [focus area]"
+
+> **Note:** We're looking for contributions to improve Claude instructions. If you're a Claude Pro user, please check [Issue #30](https://github.com/atxtechbro/tech-skills-gym/issues/30).
 
 That's it! The AI will guide you through progressive technical exercises following the training framework.
 
